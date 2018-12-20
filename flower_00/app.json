@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/shoplist/shoplist",
+    "pages/product/product",
+    "pages/logs/logs",
+    "pages/plant/plant"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fcc",
+    "navigationBarTitleText": "有意",
+    "navigationBarTextStyle": "black"
+  }
+}

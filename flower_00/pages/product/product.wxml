@@ -1,0 +1,8 @@
+<!--pages/product/product.wxml-->
+<view>
+   <form bindsubmit='checkForm'>
+       <input type='text' name='pno' placeholder='请输入商品编号'></input>
+       <input type='text' name='pname' placeholder='请输入商品名称'></input>
+        <button formType='submit'>添加商品</button>
+   </form>
+</view>
