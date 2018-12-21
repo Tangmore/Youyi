@@ -1,15 +1,41 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/shoplist/shoplist",
+    "pages/message/message",
+    "pages/profile/profile",
     "pages/product/product",
+    "pages/shoplist/shoplist",
     "pages/logs/logs",
-    "pages/plant/plant"
+    "pages/plant/plant",
+    "pages/gift/gift",
+    "pages/flowers/flowers"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fcc",
     "navigationBarTitleText": "有意",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "pages/static/home.png",
+        "selectedIconPath": "pages/static/home-active.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "pages/static/message.png",
+        "selectedIconPath": "pages/static/message-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "个人中心",
+        "iconPath": "pages/static/profile.png",
+        "selectedIconPath": "pages/static/profile-active.png"
+      }
+    ]
   }
 }

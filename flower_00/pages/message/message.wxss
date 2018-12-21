@@ -1,0 +1,22 @@
+/* pages/message/message.wxss */
+
+/* 组件灰色背景 */
+page{
+  background-color: #f1f1f1;
+}
+
+/* 卡片 */
+.card{
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 20rpx;
+  margin: 60rpx 20rpx;
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+/* 标题 */
+/* 日期 */
+/* 图片 */
+/* 描述 */
+/* 详情 */

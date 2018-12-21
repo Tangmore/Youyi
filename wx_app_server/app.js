@@ -48,16 +48,16 @@ app.get("/imagelist",(req,res)=>{
 //第十功能:分页显示鲜花列表
 //1:创建表
 // xz_shop [id;img_url;name;addr;tel;mtime,star]
-app.get("/findshops",(req,res)=>{
-  //参数: pno 当前页码1 2 pageSize 每个大小
+ //参数: pno 当前页码1 2 pageSize 每个大小
   //sql: 
   //  -总记录数->总页数
   //  -当前页内容
   //json
  //1:获取参数
+app.get("/findshops",(req,res)=>{
  var pno = req.query.pno;          //页码
  var pageSize = req.query.pageSize;//页大小
-
+ var kind=req.query.kind;  //查询种类
  //2:设置默认值 1 7
  if(!pno){pno = 1}
  if(!pageSize){pageSize=5}
@@ -89,11 +89,11 @@ app.get("/findshops",(req,res)=>{
  //6:创建sql2 查询当前页内容 严格区分大小写
  var sql =" SELECT id,fname,flolang,";
      sql+=" present,frange,star,img_url";
-     sql+=" FROM yy";
+     sql+=" FROM yy WHERE kind=?";
      sql+=" LIMIT ?,?";
  var offset = parseInt((pno-1)*pageSize);
      pageSize = parseInt(pageSize);
- pool.query(sql,[offset,pageSize],(err,result)=>{
+ pool.query(sql,[kind,offset,pageSize],(err,result)=>{
    if(err)throw err;
    progress+=50;
    obj.data=result;
@@ -102,3 +102,10 @@ app.get("/findshops",(req,res)=>{
    }
  })
 });
+
+app.get('/getProduct',(req,res)=>{
+    var pno=req.query.pno;
+	var pname=req.query.pname;
+	res.send({code:1,msg:'商品添加成功'});
+
+})

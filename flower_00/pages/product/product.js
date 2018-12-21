@@ -9,7 +9,41 @@ Page({
       var pno=event.detail.value.pno;
       var pname=event.detail.value.pname;
       //验证
-      
+      var reg=/^[a-zA-Z0-9]{6}$/;
+      if(!reg.test(pno)){
+        wx.showToast({
+          title: '商品格式不正确,必须6位',
+        })
+        setTimeout(function(){
+          wx.hideToast()
+        },1500)
+        return;
+      }
+
+      //如果验证不通过 错误提示
+      //发送ajax请求
+      wx.request({
+        url: 'http://127.0.0.1:3000/addProduct',
+        data:{pno:pno,pname:pname},
+        success:(res)=>{
+          if(res.data.code>0){
+              wx.showToast({
+                title: res.data.msg,
+              }) 
+              setTimeout(function(){
+                wx.hideToast()
+              },1500)
+          }else{
+             wx.showToast({
+               title: res.data.msg
+             })
+             setTimeout(function(){
+               wx.hideToast()
+             },1500)
+          }
+        }
+      })
+      //返回成功消息  商品添加成功
   },
   data: {
 
