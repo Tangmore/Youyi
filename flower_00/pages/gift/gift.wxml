@@ -1,0 +1,29 @@
+<!--pages/shoplist/shoplist.wxml-->
+<!-- 鲜花列表 -->
+<view class="shoplist-container">
+
+
+ <!-- <form action="http://www.baidu.com/baidu" target="_blank">
+    <input type='text' name='word' size='40'></input>
+    <input type="submit" value="百度搜索"></input>
+    <button type='submit'> 搜索</button>
+ </form> -->
+
+   <view wx:for='{{imgList}}' wx:key='index' class="infoAll">
+      <image src='{{item.img_url}}'></image>
+      <view class="describle ell">
+          <text>{{item.fname}}</text>
+          <text class='ell'>备注：{{item.flolang}}</text>
+          <text class='ell'>赠品：{{item.present}}</text>
+          <text  class='ell'>配送范围：{{item.frange}}</text>
+      </view>
+      <!-- 打分 -->
+      <view class='shop-start'>
+        <view class="star-after">★★★★★</view>
+        <view class="star-before" style='width:{{item.star}}%'>★★★★★</view>
+      </view>
+   </view>
+
+
+  
+</view>

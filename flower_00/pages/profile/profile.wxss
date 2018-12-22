@@ -1,0 +1,40 @@
+/* pages/profile/profile.wxss */
+
+.avatar{
+  background-color: rgba(238, 230, 230, 0.6);
+  height: 400rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.avatar image{
+  width: 190rpx;
+  height: 190rpx;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 0, 0, .3);
+}
+
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+
+

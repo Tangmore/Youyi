@@ -9,7 +9,7 @@ Page({
     var pno = this.data.pageIndex + 1;
     var ps = this.data.pageSize;
     var kind = this.data.kind;
- 
+
     //发送请求
     wx.request({
       url: 'http://127.0.0.1:3003/findshops',
@@ -39,7 +39,7 @@ Page({
     pageIndex: 0,   //页码
     pageSize: 5,   //页大小
     pageCount: 0,
-    kind: 2
+    kind: 3
   },
 
   /**
