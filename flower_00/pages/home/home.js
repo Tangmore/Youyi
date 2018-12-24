@@ -26,7 +26,7 @@ Page({
     list: [
       { id: 1, img_url: "http://127.0.0.1:3003/img/banner/banner1.png" },
       { id: 2, img_url: "http://127.0.0.1:3003/img/banner/banner01.png" },
-      { id: 3, img_url: "http://127.0.0.1:3003/img/banner/banner03.png" }
+      { id: 3, img_url: "http://127.0.0.1:3003/img/banner/banner08.jpg" }
      ],
 
       navlist:[
