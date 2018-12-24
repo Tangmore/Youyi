@@ -1,22 +1,19 @@
 <!--pages/profile/profile.wxml-->
 <view>
 <!-- 头像 -->
-  <!-- <view class='avatar' bindtap='onMusicTap'>
-      <image src="{{isPlaying?'http://127.0.0.1:3003/img/avatar-active.png':'http://127.0.0.1:3003/img/avatar.png'}}" lazy-load  mode='aspectFill'></image>
-  </view> -->
+  <view class='avatar' bindtap='onMusicTap'>
+      <image src="{{isPlaying?'http://127.0.0.1:3003/img/avatar-active.jpg':'http://127.0.0.1:3003/img/avatar.png'}}" lazy-load  mode='aspectFill'></image>
+  </view>
 
 <!-- 获取头像信息 -->
-  <view class="userinfo avatar">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 
-    <!-- <view class='avatar' bindtap='onMusicTap'>
-      <image src="http://127.0.0.1:3003/img/avatar.png" lazy-load  mode='aspectFill'></image>
-  </view> -->
-     </button>
+  <!-- <view class="userinfo avatar">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">  -->
+     <!-- </button>
     <block wx:else>
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
-  </view>
+  </view> -->
 
   
 

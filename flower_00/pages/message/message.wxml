@@ -1,8 +1,8 @@
 <!--pages/message/message.wxml-->
-<view class='card'>
-     <text class='card-title'>年终大促</text>
-     <text class='card-date'>2018-12-31</text>
-     <image src='' class='card-img'></image>
-     <text class='card-desc'>走过路过机会不要错过 </text>
+<view class='card' wx:for='{{list}}' wx:key='index'>
+     <text class='card-title'>{{item.title}}</text>
+     <text class='card-date'>{{item.date}}</text>
+     <image src='{{item.img_url}}' class='card-img'></image>
+     <text class='card-desc'>{{item.desc1}} </text>
      <text class='card-rad arrow'>查看详情</text>
 </view>
