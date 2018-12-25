@@ -157,3 +157,40 @@ app.get("/getmessage",(req,res)=>{
     }
   })
  });
+
+
+ //上传图片
+//fs fileSystem 文件系统模块 操作文件 创建删除移动文件
+const fs=require("fs");
+const multer=require("multer");
+//3 创建multer对指象定上传文件目录
+var upload=multer({dest:"upload/"})
+//4 创建处理上传请求 /upload 上传单个文件
+//upload.single()一次上传一张图片   mypic 指定上传文件表单 name='mypic'
+app.post("/upload",upload.single("mypic"),(req,res)=>{ 
+    //5 获取上传文件大小 小于2MB
+    var size=req.file.size/1000/1000;
+        if(size>2){
+            res.send({code:-1,msg:'上传图片过大，超过2M'});
+        }
+        
+        //6 获取上传文件类型 图片
+        var type=req.file.mimetype;
+        var i2=type.indexOf("image");
+        if(i2===-1){
+            res.send({code:-2,msg:'只能上传图片'});
+            return;
+        }
+        //7 创建新文件名 
+        var src=req.file.originalname; 
+        var fTime=new Date().getTime();
+        var fRand=Math.floor(Math.random()*9999);
+        var i3=src.lastIndexOf(".");
+        var suff=src.substring(i3,src.length);  //.jpg
+        var des="./upload/"+fTime+fRand+suff;
+        console.log(des);
+        //8 将临时文件移动到upload目录
+        fs.renameSync(req.file.path,des);   
+        //9 返回上传成功信息
+        res.send({code:1,msg:'图片上传成功'})
+})

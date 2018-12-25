@@ -1,0 +1,6 @@
+<!--pages/addMessage/addMessage.wxml-->
+<view>
+  <text>上传消息的图片</text>
+  <button bindtap='selectImg'>选择图片</button>
+  
+</view>

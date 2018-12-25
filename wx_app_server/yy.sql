@@ -178,3 +178,30 @@ INSERT INTO yy VALUES(null,'http://127.0.0.1:3003/img/gift/vase_chocolate_220x24
 INSERT INTO yy VALUES(null,'http://127.0.0.1:3003/img/gift/pencial_220x240.jpg','创意手工巧克力','不凋谢的玫瑰。','下单填写留言，即免费赠送精美贺卡！','顺丰陆运快递深圳发货, 全国可达, 包邮!',65,3);
 
 INSERT INTO yy VALUES(null,'http://127.0.0.1:3003/img/gift/dried_flower_220x240.jpg','干花','一抹花香，带给你幸运。那一月，我转过所有经轮，不为超度，只为触摸你的指尖','下单填写留言，即免费赠送精美贺卡！','顺丰陆运快递深圳发货, 全国可达, 包邮!',65,3);
+
+
+#消息列表
+CREATE TABLE yy_message(
+  id  INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(255),
+  ctime DATE,
+  img_url  VARCHAR(255),
+  desc1 VARCHAR(255),
+  content VARCHAR(2000)
+  );
+
+INSERT INTO yy_message VALUES(null,'大甩卖','2018-2-19','http://127.0.0.1:3003/img/banner/banner01.png','哈哈哈','买花卖花麦花');
+INSERT INTO yy_message VALUES(null,'大甩卖','2018-2-19','http://127.0.0.1:3003/img/banner/banner1.png','哈哈哈','买花卖花麦花');
+INSERT INTO yy_message VALUES(null,'大甩卖','2018-2-19','http://127.0.0.1:3003/img/banner/banner2.png','哈哈哈','买花卖花麦花');
+INSERT INTO yy_message VALUES(null,'大甩卖','2018-2-19','http://127.0.0.1:3003/img/banner/banner04.jpg','哈哈哈','买花卖花麦花');
+INSERT INTO yy_message VALUES(null,'大甩卖','2018-2-19','http://127.0.0.1:3003/img/banner/banner06.jpg','哈哈哈','买花卖花麦花');
+INSERT INTO yy_message VALUES(null,'大甩卖','2018-2-19','http://127.0.0.1:3003/img/banner/banner07.jpg','哈哈哈','买花卖花麦花');
+INSERT INTO yy_message VALUES(null,'大甩卖','2018-2-19','http://127.0.0.1:3003/img/banner/banner08.jpg','哈哈哈','买花卖花麦花');
+INSERT INTO yy_message VALUES(null,'大甩卖','2018-2-19','http://127.0.0.1:3003/img/banner/banner09.png','哈哈哈','买花卖花麦花');
+INSERT INTO yy_message VALUES(null,'大甩卖','2018-2-19','http://127.0.0.1:3003/img/banner/banner10.png','哈哈哈','买花卖花麦花');
+INSERT INTO yy_message VALUES(null,'大甩卖','2018-2-19','http://127.0.0.1:3003/img/banner/banner11.jpg','哈哈哈','买花卖花麦花');
+INSERT INTO yy_message VALUES(null,'大甩卖','2018-2-19','http://127.0.0.1:3003/img/banner/banner12.jpg','哈哈哈','买花卖花麦花');
+INSERT INTO yy_message VALUES(null,'大甩卖','2018-2-19','http://127.0.0.1:3003/img/banner/banner13.png','哈哈哈','买花卖花麦花');
+INSERT INTO yy_message VALUES(null,'大甩卖','2018-2-19','http://127.0.0.1:3003/img/banner/banner14.jpg','哈哈哈','买花卖花麦花');
+INSERT INTO yy_message VALUES(null,'大甩卖','2018-2-19','http://127.0.0.1:3003/img/banner/banner15.jpg','哈哈哈','买花卖花麦花');
+INSERT INTO yy_message VALUES(null,'大甩卖','2018-2-19','http://127.0.0.1:3003/img/banner/banner17.jpg','哈哈哈','买花卖花麦花');
