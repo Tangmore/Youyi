@@ -1,4 +1,21 @@
 <!--pages/floDetail/floDetail.wxml-->
-<view>
+<!--轮播图-->
+   <view class="slider">
+     <swiper autoplay>
+       <swiper-item wx:for="{{bannerList}}" wx:key="index">
+          <image src="{{item}}" lazy-load mode="aspectFill"></image>
+       </swiper-item>
+     </swiper>
+   </view>
+
+
+<view class="infoAll">
+   <view wx:for='{{dataLlist}}' wx:key='index' class="describle">
+        <view class='item fname'>{{item.fname}}</view>
+        <view class='item'><text class='title'>花语：</text><text>{{item.flolang}}</text></view>
+        <view class='item'><text class='title'>介绍：</text><text>{{item.present}}</text></view>
+        <view class='item'><text class='title'>地理分布：</text><text>{{item.frange}}</text></view>
+        <view class='item'><text class='title'>生长环境：</text><text>{{item.fenviroment}}</text></view>
+    </view> 
+   </view>
  
-</view>

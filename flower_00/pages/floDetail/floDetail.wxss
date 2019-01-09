@@ -1,1 +1,29 @@
 /* pages/floDetail/floDetail.wxss */
+/**功能一:轮播图**/
+.slider,.slider swiper,.slider image{
+  height:360rpx;
+  width:100%;
+}
+/* info */
+.infoAll .describle{
+    display: flex;
+    flex-wrap: wrap;
+}
+.infoAll .describle .item{
+    flex-direction: column;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: center;
+}
+.infoAll .describle .fname{
+    font-size: 24px;
+    color: #f00;
+    margin: 20px auto;
+}
+.infoAll .describle .item .title{
+    flex-direction: column;
+    font-weight: bold;
+}
+.infoAll .describle .item text:nth-child(2){
+    text-indent: 32px;
+}

@@ -35,15 +35,6 @@ app.listen(3003);
 app.use(express.static(__dirname+"/public"))
 
 
-//功能一:首页轮播图   http://127.0.0.1:3003/imagelist
-app.get("/imagelist",(req,res)=>{
-   var obj = [
-     {id:1,img_url:"http://127.0.0.1:3003/img/banner1.png"},
-     {id:2,img_url:"http://127.0.0.1:3003/img/banner01.png"},
-     {id:3,img_url:"http://127.0.0.1:3003/img/banner03.png"}
-   ];
-   res.send(obj);
-});
 
 //第十功能:分页显示鲜花列表
 //1:创建表

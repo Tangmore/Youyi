@@ -23,6 +23,7 @@ Page({
       success: (res) => {
         console.log(res.data.pageCount)
         var rows = this.data.imgList.concat(res.data.data);
+        console.log(rows)
         this.setData({
           imgList: rows,
           pageIndex: pno,

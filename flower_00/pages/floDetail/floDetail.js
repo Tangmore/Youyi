@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // id:0
+    dataLlist:[],
+    bannerList:[]
   },
 
   /**
@@ -13,18 +14,29 @@ Page({
    */
   onLoad: function (options) {
        var id=options.id;
-      //  this.setDate({
-      //    id:id
-      //  })
       wx.request({
         url: 'http://127.0.0.1:3003/getFloDetail',
        methods:'get',
        data:{id:id},
-        success: function(res) {
-           console.log(res)
-        }
-      })
+        success: (res)=> {
+         var data=res.data;
+          var imgData=data[0].banner.split('&');  
+          console.log(data)          
+          this.setData({
+            dataLlist:data,
+            bannerList:imgData
+          })
 
+            //显示加载动画
+            wx.showLoading({
+              title: '正在加载数据...',
+            })
+            //卸载加载动画
+            setTimeout(() => {
+              wx.hideLoading()
+            }, 800)
+        }
+      }) 
   },
 
   /**
