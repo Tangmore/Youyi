@@ -3,6 +3,7 @@
   white-space: nowrap; /*不允许换行*/
   overflow: hidden;
   text-overflow: ellipsis;  
+  height: 50px;
 }
 .divider{
   height: 30rpx;

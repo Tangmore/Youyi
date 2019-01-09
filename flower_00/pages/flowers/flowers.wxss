@@ -1,35 +1,36 @@
 /* pages/shoplist/shoplist.wxss */
-.shoplist-container .infoAll{
-    display: flex;
+  .infoAll{
+     /* display: flex;
     flex-direction: row;
-    height: 114px;
-    padding: 4px;
+   height: 114px;*/
+    padding: 4px; 
     background-color: #F9FAFE;
     border-bottom: 1px solid #ccc;
-    position: relative;
+    position: relative; 
 }
-.shoplist-container .infoAll image{
+ .infoAll image{
     width:140px;
     height: 90px;
     padding: 10px;
-}
-.shoplist-container .infoAll .describle{
+    text-align: center;
+} 
+ .infoAll .describle{
     font-size: 0.6rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 620rpx;
 }
-.shoplist-container .infoAll .describle>text:first-child{
+ .infoAll .describle>text:first-child{
     font-size: 14px;
     font-weight: bold;
 }
-.shoplist-container .infoAll .describle text:nth-child(2),
-.shoplist-container .infoAll .describle text:nth-child(3),
-.shoplist-container .infoAll .describle text:nth-child(4){
+ .infoAll .describle text:nth-child(2),
+ .infoAll .describle text:nth-child(3),
+ .infoAll .describle text:nth-child(4){
     color: #333;
 }
-.shoplist-container .infoAll .describle text>text{
+ .infoAll .describle text>text{
     font-weight: 500;
 }
 /* 五星 打分*/

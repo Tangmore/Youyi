@@ -1,16 +1,16 @@
 {
-  "pages": [
-      "pages/addMessage/addMessage",
+  "pages": ["pages/home/home",
+    "pages/flowers/flowers",
+    
+    "pages/addMessage/addMessage",
     "pages/message/message",
     "pages/profile/profile",
-    "pages/home/home",
     "pages/product/product",
     "pages/shoplist/shoplist",
     "pages/logs/logs",
-    "pages/plant/plant",
+    "pages/joke/joke",
     "pages/gift/gift",
-    "pages/flowers/flowers"
-  
+    "pages/floDetail/floDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

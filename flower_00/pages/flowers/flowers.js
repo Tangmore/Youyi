@@ -1,6 +1,12 @@
 // pages/shoplist/shoplist.js
 Page({
 
+  handleToDetail(e){
+    var id=e.target.dataset.id;
+     wx.navigateTo({
+       url: '/pages/floDetail/floDetail?id='+id
+     })
+  },
   /**
    * 页面的初始数据
    */
@@ -9,7 +15,6 @@ Page({
     var pno = this.data.pageIndex + 1;
     var ps = this.data.pageSize;
     var kind = this.data.kind;
-
     //发送请求
     wx.request({
       url: 'http://127.0.0.1:3003/findshops',

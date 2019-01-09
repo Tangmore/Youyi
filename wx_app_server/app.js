@@ -88,7 +88,7 @@ app.get("/findshops",(req,res)=>{
  });
  //6:创建sql2 查询当前页内容 严格区分大小写
  var sql =" SELECT id,fname,flolang,";
-     sql+=" present,frange,star,img_url";
+     sql+="star,img_url";
      sql+=" FROM yy WHERE kind=?";
      sql+=" LIMIT ?,?";
  var offset = parseInt((pno-1)*pageSize);
@@ -110,7 +110,16 @@ app.get('/getProduct',(req,res)=>{
 
 })
 
-
+// 详情
+app.get("/getFloDetail",(req,res)=>{
+  var id=req.query.id;
+  var sql =" SELECT fname,banner,flolang,present,frange,fenviroment star";
+     sql+=" FROM yy WHERE id=?";
+   pool.query(sql,id,(err,result)=>{
+     if(err) throw err;
+     res.send(result);
+   })
+})
 
 //信息列表
 app.get("/getmessage",(req,res)=>{
