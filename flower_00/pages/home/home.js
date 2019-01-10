@@ -11,6 +11,12 @@ Page({
         })
       }
 
+    if (e.target.dataset.id == 2) {
+      wx.navigateTo({
+        url: '/pages/gallery/gallery',
+      })
+    }
+
   },
   data: {
     list: [
@@ -24,7 +30,7 @@ Page({
 
       navlist:[
       {id:1,img_url: "http://127.0.0.1:3003/icons/grid-1.png",title:'鲜花'},
-      {id:2,img_url: "http://127.0.0.1:3003/icons/grid-3.png",title:'笑话'},
+      {id:2,img_url: "http://127.0.0.1:3003/icons/grid-3.png",title:'画廊'},
       {id:3,img_url: "http://127.0.0.1:3003/icons/grid-4.png",title:'美文'},
       {id: 4, img_url: "http://127.0.0.1:3003/icons/grid-5.png", title:'网址'},
       {id:5,img_url: "http://127.0.0.1:3003/icons/grid-6.png",title:'论坛'},

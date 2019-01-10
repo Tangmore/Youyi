@@ -1,7 +1,9 @@
 {
-  "pages": ["pages/home/home",
+  "pages": [
+      "pages/home/home",
+      "pages/gallery/gallery",
+  
     "pages/flowers/flowers",
-    
     "pages/addMessage/addMessage",
     "pages/message/message",
     "pages/profile/profile",
@@ -11,6 +13,7 @@
     "pages/joke/joke",
     "pages/gift/gift",
     "pages/floDetail/floDetail"
+  
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -11,19 +11,25 @@
 }
 .infoAll .describle .item{
     flex-direction: column;
+    justify-content: center;
     margin-bottom: 4px;
     display: flex;
-    justify-content: center;
+    width: 100%;
 }
 .infoAll .describle .fname{
     font-size: 24px;
     color: #f00;
     margin: 20px auto;
+    text-align: center;
 }
+
 .infoAll .describle .item .title{
     flex-direction: column;
     font-weight: bold;
+    font-size: 16px;
 }
+.infoAll .describle .present,
 .infoAll .describle .item text:nth-child(2){
     text-indent: 32px;
+    font-size: 14px;
 }

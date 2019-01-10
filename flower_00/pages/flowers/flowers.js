@@ -21,9 +21,9 @@ Page({
       method: 'get',
       data: { pno: pno, pageSize: ps, kind: kind },
       success: (res) => {
-        console.log(res.data.pageCount)
+        // console.log(res.data.pageCount)
         var rows = this.data.imgList.concat(res.data.data);
-        console.log(rows)
+        // console.log(rows)
         this.setData({
           imgList: rows,
           pageIndex: pno,

@@ -98,19 +98,91 @@ app.get('/getProduct',(req,res)=>{
     var pno=req.query.pno;
 	var pname=req.query.pname;
 	res.send({code:1,msg:'商品添加成功'});
-
 })
 
-// 详情
+// 鲜花详情
 app.get("/getFloDetail",(req,res)=>{
   var id=req.query.id;
-  var sql =" SELECT fname,banner,flolang,present,frange,fenviroment star";
-     sql+=" FROM yy WHERE id=?";
+  var sql =" SELECT fname,banner,flolang,present,frange,fenviroment  FROM yy WHERE id=?";
    pool.query(sql,id,(err,result)=>{
      if(err) throw err;
      res.send(result);
    })
 })
+
+//画廊
+app.get('/getPics',(req,res)=>{
+
+    var pno=req.query.pno;
+    var pageSize=req.query.pageSize;
+    var keyWord=req.query.kw;
+
+    if(!pno){pno=1}
+    if(!pageSize) {pageSize=8}
+   
+    var reg=/^[0-9]{1,3}/;
+    if(!reg.test(pno)){
+      res.send({code:-1,msg:'页编码格式不正确'})
+      return;
+    }
+    if(!reg.test(pageSize)){
+      res.send({code:-2,msg:'页大小格式不正确'})
+      return;
+    }
+
+    var progress=0;
+    var obj={code:1};
+    //查询总条数
+    var allCount='SELECT count(id) AS c FROM gallery';
+    pool.query(allCount,(err,result)=>{
+      if(err) throw err;
+      var pageCount=Math.ceil(result[0].c/pageSize);
+      progress+=50;
+      // obj.pageCount = pageCount;
+      if(!keyWord){
+        keyWord='';
+        obj.pageCount = pageCount;
+      }else{
+        obj.pageCount = 0;
+      }
+      if(progress==150){
+        res.send(obj);
+      }
+    });
+
+    //查询关键词搜索条数
+    const keyCount=`SELECT count(id) AS c FROM gallery where gallery.title like '%${keyWord}%'`;
+    pool.query(keyCount,(err,result)=>{
+      if(err) throw err;
+      var keypageCount=Math.ceil(result[0].c/pageSize);
+      progress+=50;
+      obj.keypageCount = keypageCount;
+      if(progress==150){
+        res.send(obj);
+      }
+    });
+
+    //查询当前页的内容
+    const keywordStr = `select id,img_url  from gallery where gallery.title like '%${keyWord}%' LIMIT ?,?`;
+    var offset = parseInt((pno-1)*pageSize);
+        pageSize = parseInt(pageSize);
+    pool.query(keywordStr,[offset,pageSize],(err,result)=>{
+      if(err)throw err;
+      progress+=50;
+      obj.data=result;
+      if(progress==150){
+        res.send(obj);
+      }
+    })
+});
+
+
+
+
+
+
+
+
 
 //信息列表
 app.get("/getmessage",(req,res)=>{

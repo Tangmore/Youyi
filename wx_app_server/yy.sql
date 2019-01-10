@@ -3,6 +3,8 @@ SET NAMES UTF8;
 CREATE DATABASE youyi CHARSET=UTF8;
 USE youyi;
 
+
+  #鲜花
 CREATE TABLE yy(
   id  INT PRIMARY KEY AUTO_INCREMENT,
   img_url VARCHAR(255),
@@ -15,7 +17,6 @@ CREATE TABLE yy(
   star  INT,
   kind INT
   );
-  #鲜花
 INSERT INTO yy VALUES(null,
 'http://127.0.0.1:3003/img/flowers/wuwangwo_220x240.jpg',
 'http://127.0.0.1:3003/img/detailImg/ww1.png&http://127.0.0.1:3003/img/detailImg/ww2.png',
@@ -66,7 +67,7 @@ INSERT INTO yy VALUES(null,'http://127.0.0.1:3003/img/flowers/mantianxing_220x24
 '生于海拔1100-1500米河滩、草地、固定沙丘、石质山坡及农田中。该种的生命力极强，生根快。宜在向阳环境和疏松肥沃、排水良好的微碱性砂壤土生长，土壤要求疏松，富含有机质，含水量适中，pH值7左右。',80,1);
 
 INSERT INTO yy VALUES(null,'http://127.0.0.1:3003/img/flowers/zisejigeng_220x240.jpg',
-'http://127.0.0.1:3003/img/detailImg/zsjg1.png&http://127.0.0.1:3003/img/detailImg/zsjg1.png',
+'http://127.0.0.1:3003/img/detailImg/zsjg1.png&http://127.0.0.1:3003/img/detailImg/zsjg2.png',
 '紫色桔梗',
 '真诚不变的爱,充满感动,赋予感情。紫桔梗有着细致脆弱的花瓣，花色纯白，紫色，还有白色周围镶有紫色，蓝色花边的。于是开始送人桔梗，适合送情人也适合送永不在相见的对象，因为它既是永恒，也是无望，或是永恒无望的爱。',
 '桔梗（Platycodon gradiflorus）又名苦根菜、梗草、铃铛花、包袱花，属桔梗科桔梗属多年生草本植物。',
