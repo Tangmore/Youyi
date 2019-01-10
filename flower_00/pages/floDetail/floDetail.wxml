@@ -7,3 +7,14 @@
        </swiper-item>
      </swiper>
    </view>
+
+<view class="infoAll">
+   <view wx:for='{{dataLlist}}' wx:key='index' class="describle">
+        <view class='item fname'>{{item.fname}}</view>
+        <view class='item present'>{{item.present}}</view>
+        <view class='item'><text class='title'>花语：</text><text>{{item.flolang}}</text></view>
+        <view class='item'><text class='title'>地理分布：</text><text>{{item.frange}}</text></view>
+        <view class='item'><text class='title'>生长环境：</text><text>{{item.fenviroment}}</text></view>
+    </view> 
+   </view>
+ 

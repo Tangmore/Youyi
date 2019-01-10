@@ -1,0 +1,21 @@
+<!--pages/gallery/gallery.wxml-->
+
+
+<view class="gallery">
+    <view class="searchBox">
+        <input type="text" confirm-type='search' placeholder="请输入关键词..." bindblur='getKey' class="seachimg"/>
+    </view>
+    <view class="galleryBox">
+    <view class="left" >
+        <view wx:for='{{imgList}}' wx:key='index'  wx:if='{{index%2==0}}'>
+            <image src='{{item.img_url}}' lazy-load mode="widthFix" ></image>
+        </view>
+    </view>
+
+    <view class="right" >
+        <view wx:for='{{imgList}}' wx:key='index' wx:if='{{index%2==1}}'>
+            <image src='{{item.img_url}}' lazy-load mode="widthFix" ></image>
+        </view> 
+    </view>
+</view>
+</view>

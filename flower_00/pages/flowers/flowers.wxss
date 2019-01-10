@@ -1,8 +1,7 @@
 /* pages/shoplist/shoplist.wxss */
   .infoAll{
-     /* display: flex;
-    flex-direction: row;
-   height: 114px;*/
+     display: flex;
+    flex-direction: column;
     padding: 4px; 
     background-color: #F9FAFE;
     border-bottom: 1px solid #ccc;
@@ -11,23 +10,21 @@
  .infoAll image{
     width:140px;
     height: 90px;
-    padding: 10px;
-    text-align: center;
+    margin:  0 auto;
 } 
  .infoAll .describle{
     font-size: 0.6rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     width: 620rpx;
+    margin: 0 auto;
 }
  .infoAll .describle>text:first-child{
     font-size: 14px;
     font-weight: bold;
+    text-align: center;
 }
- .infoAll .describle text:nth-child(2),
- .infoAll .describle text:nth-child(3),
- .infoAll .describle text:nth-child(4){
+ .infoAll .describle text:nth-child(2){
     color: #333;
 }
  .infoAll .describle text>text{
