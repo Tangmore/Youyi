@@ -6,6 +6,8 @@ Page({
    */
   data: {
     // id:0
+    dataLlist:[],
+    bannerList:[]
   },
 
   /**
@@ -21,7 +23,14 @@ Page({
        methods:'get',
        data:{id:id},
         success: function(res) {
-           console.log(res)
+           var data=res.data;
+           for(var item of data){
+             var img=item.img.split('&');
+             this.setData({
+               bannerList: img
+             })
+           }
+           
         }
       })
 

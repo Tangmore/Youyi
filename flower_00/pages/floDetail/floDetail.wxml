@@ -1,4 +1,9 @@
 <!--pages/floDetail/floDetail.wxml-->
-<view>
- 
-</view>
+<!--轮播图-->
+   <view class="slider">
+     <swiper autoplay>
+       <swiper-item wx:for="{{bannerList}}" wx:key="index">
+          <image src="{{item}}" lazy-load mode="aspectFill"></image>
+       </swiper-item>
+     </swiper>
+   </view>
