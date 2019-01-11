@@ -1,4 +1,5 @@
 // pages/message/message.js
+const app=getApp()
 Page({
 
   /**
@@ -19,7 +20,7 @@ Page({
     var pageSize=this.data.pageSize;
     //发送ajax请求数据
     wx.request({
-      url: 'http://127.0.0.1:3003/getmessage',
+      url: app.globalData.baseUrl+'getmessage',
       method:'get',
       data:{pno:pno,pageSize:pageSize},
         //接收返回的数据

@@ -1,4 +1,5 @@
 // pages/shoplist/shoplist.js
+const app=getApp()
 Page({
 
   /**
@@ -12,7 +13,7 @@ Page({
 
        //发送请求
        wx.request({
-         url: 'http://127.0.0.1:3003/findshops',
+         url: app.globalData.baseUrl+'findshops',
          method:'get',
          data:{pno:pno,pageSize:ps,kind:kind},
          success:(res)=>{

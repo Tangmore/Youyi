@@ -1,4 +1,5 @@
 // pages/product/product.js
+const app=getApp()
 Page({
 
   /**
@@ -23,7 +24,7 @@ Page({
       //如果验证不通过 错误提示
       //发送ajax请求
       wx.request({
-        url: 'http://127.0.0.1:3000/addProduct',
+        url: app.globalData.baseUrl+'addProduct',
         data:{pno:pno,pname:pname},
         success:(res)=>{
           if(res.data.code>0){

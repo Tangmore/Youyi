@@ -1,5 +1,7 @@
 /* pages/profile/profile.wxss */
-
+.profileBox{
+  position: relative;
+}
 .avatar{
   background-color: rgba(238, 230, 230, 0.6);
   height: 400rpx;
@@ -13,28 +15,100 @@
   border-radius: 50%;
   border: 3px solid rgba(0, 0, 0, .3);
 }
+.profileBox .add {
+  position: absolute;
+  top: 0;
+  right: 6px;
+  z-index: 999;
+  margin: 15px 10px;
+  height: 35px;
+  width: 35px;
+}
 
-
-.userinfo {
+/* tab切换 */
+.tablist {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+}
+.tablist .tab {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 25%;
+    border-right: 1px solid #eceff4;
+}
+.tab .content{
+    width: 25px;
+    height: 50px;
+    font-size: 12px;
+    color: #B3B3B3;
+}
+
+.tab .image {
+    width: 25px;
+    height: 25px;
+    margin-top: 10px;
+}
+
+
+/* 标题模态框 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 99;
+  background: rgba(0, 0, 0, .5);
+  opacity: 0;
+  transition: opacity 400ms ease-in;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.modal .dialog {
+  width: 84%;
+  height: 28%;
+  background-color: #eceff4;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.dialog .modal-item {
+  height: 33.3%;
+  width: 100%;
 }
-
-.usermotto {
-  margin-top: 200px;
+.dialog .diaryTitle{
+  text-align: center;
+  margin-top: 8px;
 }
-
-
-
+.dialog .inputBox{
+  margin:0 auto;
+  width:90%;
+}
+.dialog .inputBox input{
+  background-color:#fff;
+  border-radius:2px;
+  font-size: 14px;
+}
+.modal-button {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+}
+.modal-button view {
+  width: 50%;
+  border-top: 1px solid #E5E7ED;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+}
+.modal-button view:first-child{
+  color:green;
+  border-right:1px solid #E5E7ED;
+}

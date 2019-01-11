@@ -21,7 +21,10 @@ SET time_zone = "+00:00";
 --
 -- Database: `youyi`
 --
+SET NAMES UTF8;
 
+CREATE DATABASE youyi CHARSET=UTF8;
+USE youyi;
 -- --------------------------------------------------------
 
 --

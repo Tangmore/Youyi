@@ -1,4 +1,5 @@
 // pages/floDetail/floDetail.js
+const app=getApp()
 Page({
 
   /**
@@ -15,7 +16,7 @@ Page({
   onLoad: function (options) {
        var id=options.id;
       wx.request({
-        url: 'http://127.0.0.1:3003/getFloDetail',
+        url:app.globalData.baseUrl+ 'getFloDetail',
        methods:'get',
        data:{id:id},
         success: (res)=> {
