@@ -1,58 +1,39 @@
 <!--pages/profile/profile.wxml-->
-<template name="tab1">
-    <view>
-    </view>
-</template>
+<view class="profileBox">
+  <!-- 头像 -->
+  <view class='avatar' bindtap='onGetAvatar'>
+    <!-- <image src="{{isPlaying?'http://127.0.0.1:3003/img/avatar-active.jpg':'http://127.0.0.1:3003/img/avatar.png'}}" 
+      lazy-load mode='aspectFill'></image> -->
+      <!-- 如果只是展示用户头像昵称，可以使用 <open-data /> 组件 -->
+    <open-data type="userAvatarUrl"></open-data>
+    <open-data type="userNickName"></open-data>
 
-<template name="tab2">
-    <view>
-    </view>
-</template>
-
-<template name="tab3">
-    <view>
-    </view>
-</template>
-
-
-
-<view>
-<!-- 头像 -->
-  <view class='avatar' bindtap='onMusicTap'>
-      <image src="{{isPlaying?'http://127.0.0.1:3003/img/avatar-active.jpg':'http://127.0.0.1:3003/img/avatar.png'}}" lazy-load  mode='aspectFill'></image>
   </view>
 
-   <image class="add" mode="aspectFill" src="../static/icons/add.png" bindtap="touchAdd"></image>
+  <!-- 添加 -->
+  <image class="add" mode="aspectFill" src="../static/icons/add.png" bindtap="touchAdd"></image>
 
-<!-- 获取头像信息 -->
-  <!-- <view class="userinfo avatar">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">  -->
-     <!-- </button>
-    <block wx:else>
-      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view> -->
-
-<!-- 个人列表 -->
-<!-- <view class='divider'></view> -->
-<!-- 服务条款 -->
-<!-- <view class='cell'>
-    <view class='cell-item arrow'>日记</view>
-    <view class='cell-item arrow'>收藏</view>
-    <view class='cell-item arrow'>喜欢</view>
-    <view class='cell-item arrow'>更多</view>
-  <view class='cell-item arrow'>设置</view>
-</view> -->
-
+  <!-- tab -->
   <view class="tablist">
-      <view wx:for="{{tabs}}" wx:for-index="idx" class="tab" bindtap="touchTab" style="{{item.extraStyle}}" id="{{idx}}">
-        <view class="content" style="color:{{highLightIndex == idx ? '#54BFE2' : ''}};">
-          <image class="image" mode="aspectFit" src="{{highLightIndex == idx ? item.iconActive :  item.icon}}"></image>
-          <view style="margin-top:2px;">{{item.title}}</view>
-        </view>
+    <view wx:for="{{tabs}}" wx:key='index'  id="{{index}}" bindtap="touchTab"  class="tab" >
+      <view class="content" >
+        <image class="image" mode="aspectFit" src="{{highLightIndex == index ? item.iconActive :  item.icon}}"></image>
+        <view style="margin-top:2px;color:{{highLightIndex == index ?'#54BFE2':''}}">{{item.title}}</view>
       </view>
     </view>
-  <template is="{{currentTab}}"></template>
-</view>
+  </view>
 
+  <!--一个全屏模态对话框-->
+  <view class="modal" style="{{modalShowStyle}}">
+      <view class="dialog">
+          <view class="modal-item diaryTitle" >请输入日记标题</view>
+          <view class="modal-item inputBox">
+            <input type="text" bindinput="titleInput" value="{{diaryTitle}}" placeholder="请输入日记标题"></input>
+          </view>
+          <view class="modal-button">
+            <view bindtap="touchAddNew">确定</view>
+            <view bindtap="touchCancel">取消</view>
+          </view>
+      </view>
+    </view>
+</view>

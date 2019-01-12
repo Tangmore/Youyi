@@ -1,5 +1,6 @@
 // pages/gallery/gallery.js
 // http://127.0.0.1:3003/getPics 
+const app = getApp();
 Page({
   loadMore(){
     var pno=this.data.pageIndex+1;
@@ -7,7 +8,7 @@ Page({
     var kw=this.data.kw;
 
     wx.request({
-      url: 'http://127.0.0.1:3003/getPics',
+      url: app.globalData.baseUrl+'getPics',
       methods: 'get',
       data:{pno:pno,pageSize:ps,kw:kw},
       success: (res)=> {

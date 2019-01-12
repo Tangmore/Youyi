@@ -1,114 +1,140 @@
 // pages/profile/profile.js
 //获取应用实例
-// const app = getApp();
+const app = getApp();
 // 自定义标签
 var iconPath = "../static/icons/"
 var tabs = [
   {
     "icon": iconPath + "mark.png",
     "iconActive": iconPath + "markHL.png",
-    "title": "日记",
-    "extraStyle": "",
+    "title": "日记"
   },
   {
     "icon": iconPath + "collect.png",
     "iconActive": iconPath + "collectHL.png",
-    "title": "收藏",
-    "extraStyle": "",
+    "title": "收藏"
   },
   {
     "icon": iconPath + "like.png",
     "iconActive": iconPath + "likeHL.png",
-    "title": "喜欢",
-    "extraStyle": "",
+    "title": "喜欢"
+  },
+  {
+    "icon": iconPath + "more.png",
+    "iconActive": iconPath + "moreHL.png",
+    "title": "更多"
   }
 ]
 
 Page({
 
-  /**控制背景音乐切换 */
-onMusicTap:function(){
-  var isp=this.data.isPlaying;
-  if(isp){
-    wx.pauseBackgroundAudio();
-    this.setData({
-      isPlaying:false
-
-    })
-  } else {
-    wx.playBackgroundAudio({
-      dataUrl: 'http://127.0.0.1:3003/bg.mp3'
-    })
-    this.setData({
-      isPlaying: true
-    })
-  }
+/**
+* 控制背景音乐切换 
+*/
+// onMusicTap(){
+//   var isp=this.data.isPlaying;
+//   if(isp){
+//     wx.pauseBackgroundAudio();
+//     this.setData({
+//       isPlaying:false
+//     })
+//   } else {
+//     wx.playBackgroundAudio({
+//       dataUrl: app.globalData.baseUrl+'bg.mp3'
+//     })
+//     this.setData({
+//       isPlaying: true
+//     })
+//   }
+// },
+onGetAvatar(){
+    
 },
+
+
+  /**
+   * 点击tab项事件
+   */ 
+  touchTab(event) {
+    var tabIndex = event.currentTarget.id;  
+    this.setData({
+        highLightIndex: tabIndex
+    })
+  },
+
+/** 
+ * 点击新建日记按钮
+ */ 
+touchAdd() {
+  this.setData({
+      modalShowStyle: "opacity:1"
+  })
+},
+
+/** 
+ * 新建日记
+ */ 
+touchAddNew() {
+  this.setData({modalShowStyle: ""});
+  wx.navigateTo({
+      url: "/pages/article/article?title=" + this.data.diaryTitle,
+  });
+},
+/**
+ * 取消标题输入
+ */
+touchCancel() {
+  this.setData({modalShowStyle: ""});
+  this.setData({diaryTitle: ""});
+}, 
+/**
+ * 标题输入事件
+ */
+titleInput(event) {
+  this.setData({
+      diaryTitle: event.detail.value,
+  })
+},
+
 
   /**
    * 页面的初始数据
    */
   data: {
-       isPlaying:false,
-    // 展示的tab标签
+    isPlaying:false,
+
+    /*------------tab---------------- */
     tabs: tabs,
+    highLightIndex:0 , //默认显示第一个
 
-    // 当前选中的标签
-    currentTab: "tab1"
+    /*------------模态输入框------------- */
+    modalShowStyle: "", // 模态对话框样式 
+    diaryTitle: "", // 待新建的日记标题
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
-  // 点击tab项事件
-  touchTab: function (event) {
-    var tabIndex = parseInt(event.currentTarget.id);
-    var template = "tab" + (tabIndex + 1).toString();
 
-    this.setData({
-      currentTab: template,
-      highLightIndex: tabIndex.toString()
-    }
-    );
-  },
 
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    // if (app.globalData.userInfo) {
-    //   this.setData({
-    //     userInfo: app.globalData.userInfo,
-    //     hasUserInfo: true
-    //   })
-    // } else if (this.data.canIUse) {
-    //   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    //   // 所以此处加入 callback 以防止这种情况
-    //   app.userInfoReadyCallback = res => {
-    //     this.setData({
-    //       userInfo: res.userInfo,
-    //       hasUserInfo: true
-    //     })
-    //   }
-    // } else {
-    //   // 在没有 open-type=getUserInfo 版本的兼容处理
-    //   wx.getUserInfo({
-    //     success: res => {
-    //       app.globalData.userInfo = res.userInfo
-    //       this.setData({
-    //         userInfo: res.userInfo,
-    //         hasUserInfo: true
-    //       })
-    //     }
-    //   })
-    // }
-  },
-  // getUserInfo: function (e) {
-  //   console.log(e)
-  //   app.globalData.userInfo = e.detail.userInfo
-  //   this.setData({
-  //     userInfo: e.detail.userInfo,
-  //     hasUserInfo: true
-  //   })
-  // },
+        // 查看是否授权
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success(res) {
+              console.log(res.userInfo)
+            }
+          })
+        }
+      }
+    })
+  }, 
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -120,9 +146,10 @@ onMusicTap:function(){
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: function() {
+  
   },
+  
 
   /**
    * 生命周期函数--监听页面隐藏

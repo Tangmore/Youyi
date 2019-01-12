@@ -29,21 +29,13 @@ app.use(session({
 
 //3:指定监听端口3003
 app.listen(3003);
+console.log('服务器启动成功，3003port')
 //4:指定静态目录 public
 // __dirname 当前程序所属目录绝对路径 
 //app.js vue_app_server
 app.use(express.static(__dirname+"/public"))
-
-
-
-//第十功能:分页显示鲜花列表
-//1:创建表
-// xz_shop [id;img_url;name;addr;tel;mtime,star]
- //参数: pno 当前页码1 2 pageSize 每个大小
-  //sql: 
-  //  -总记录数->总页数
-  //  -当前页内容
-  //json
+app.use(express.static(__dirname+"/upload"))
+//分页显示鲜花列表
  //1:获取参数
 app.get("/findshops",(req,res)=>{
  var pno = req.query.pno;          //页码
@@ -235,6 +227,7 @@ app.get("/getmessage",(req,res)=>{
 //fs fileSystem 文件系统模块 操作文件 创建删除移动文件
 const fs=require("fs");
 const multer=require("multer");
+const baseUrl='http://127.0.0.1:3003/';
 //3 创建multer对指象定上传文件目录
 var upload=multer({dest:"upload/"})
 //4 创建处理上传请求 /upload 上传单个文件
@@ -260,9 +253,15 @@ app.post("/upload",upload.single("mypic"),(req,res)=>{
         var i3=src.lastIndexOf(".");
         var suff=src.substring(i3,src.length);  //.jpg
         var des="./upload/"+fTime+fRand+suff;
-        console.log(des);
+        //添加的图片地址
+        var url=baseUrl+'upload/'+fTime+fRand+suff;
+        console.log(url);
         //8 将临时文件移动到upload目录
         fs.renameSync(req.file.path,des);   
         //9 返回上传成功信息
-        res.send({code:1,msg:'图片上传成功'})
+        res.send({
+          code:1,
+          msg:'图片上传成功',
+          url:url
+        })
 })

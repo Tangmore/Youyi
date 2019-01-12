@@ -1,33 +1,9 @@
-// pages/addMessage/addMessage.js
-const app=getApp()
+// pages/authorize/authorize.js
 Page({
+
   /**
    * 页面的初始数据
    */
-  selectImg(){
-    //上传图片
-    //选中一张图片
-    wx.chooseImage({
-      //将图片上传
-      count:1,  //最多可以选择的数量
-      sizeType:['compressed'],//压缩图批示
-      sourceType:['camera','album'],//图片来源
-      success: function(res) {
-        var files=res.tempFilePaths;//选中的图片
-        wx.uploadFile({
-          url: app.globalData.baseUrl+'upload',
-          filePath: files[0],
-          name: 'mypic',
-          header:{"Content-Type":"multipart/form-data"},//修改请求头
-          formData:{pid:12,pname:'郁金香'},
-          success:function(res){
-            console.log(res)
-          }
-        })
-      },
-    })
-    
-  },
   data: {
 
   },

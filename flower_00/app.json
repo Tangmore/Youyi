@@ -1,18 +1,21 @@
 {
   "pages": [
-      "pages/profile/profile",
-      "pages/home/home",
-      "pages/gallery/gallery",
-    "pages/flowers/flowers",
+        "pages/authorize/authorize",
+    "pages/profile/profile",
+    "pages/article/article",
     "pages/addMessage/addMessage",
+    "pages/home/home",
+    "pages/gallery/gallery",
+    "pages/flowers/flowers",
     "pages/message/message",
     "pages/product/product",
     "pages/shoplist/shoplist",
     "pages/logs/logs",
     "pages/joke/joke",
     "pages/gift/gift",
-    "pages/floDetail/floDetail"
-  
+    "pages/floDetail/floDetail",
+    "pages/addArticle/addArticle"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -25,20 +28,20 @@
       {
         "pagePath": "pages/home/home",
         "text": "首页",
-        "iconPath": "pages/static/home.png",
-        "selectedIconPath": "pages/static/home-active.png"
+        "iconPath": "pages/static/tabbar/home.png",
+        "selectedIconPath": "pages/static/tabbar/home-active.png"
       },
       {
         "pagePath": "pages/message/message",
         "text": "消息",
-        "iconPath": "pages/static/message.png",
-        "selectedIconPath": "pages/static/message-active.png"
+        "iconPath": "pages/static/tabbar/message.png",
+        "selectedIconPath": "pages/static/tabbar/message-active.png"
       },
       {
         "pagePath": "pages/profile/profile",
         "text": "个人中心",
-        "iconPath": "pages/static/profile.png",
-        "selectedIconPath": "pages/static/profile-active.png"
+        "iconPath": "pages/static/tabbar/profile.png",
+        "selectedIconPath": "pages/static/tabbar/profile-active.png"
       }
     ]
   }
