@@ -1,6 +1,29 @@
 // pages/profile/profile.js
 //获取应用实例
 // const app = getApp();
+// 自定义标签
+var iconPath = "../static/icons/"
+var tabs = [
+  {
+    "icon": iconPath + "mark.png",
+    "iconActive": iconPath + "markHL.png",
+    "title": "日记",
+    "extraStyle": "",
+  },
+  {
+    "icon": iconPath + "collect.png",
+    "iconActive": iconPath + "collectHL.png",
+    "title": "收藏",
+    "extraStyle": "",
+  },
+  {
+    "icon": iconPath + "like.png",
+    "iconActive": iconPath + "likeHL.png",
+    "title": "喜欢",
+    "extraStyle": "",
+  }
+]
+
 Page({
 
   /**控制背景音乐切换 */
@@ -27,11 +50,25 @@ onMusicTap:function(){
    */
   data: {
        isPlaying:false,
-    // motto: 'Hello World',
-    // userInfo: {},
-    // hasUserInfo: false,
-    // canIUse: wx.canIUse('button.open-type.getUserInfo')
+    // 展示的tab标签
+    tabs: tabs,
+
+    // 当前选中的标签
+    currentTab: "tab1"
   },
+
+  // 点击tab项事件
+  touchTab: function (event) {
+    var tabIndex = parseInt(event.currentTarget.id);
+    var template = "tab" + (tabIndex + 1).toString();
+
+    this.setData({
+      currentTab: template,
+      highLightIndex: tabIndex.toString()
+    }
+    );
+  },
+
 
   /**
    * 生命周期函数--监听页面加载

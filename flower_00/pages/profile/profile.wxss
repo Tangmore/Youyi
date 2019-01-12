@@ -36,5 +36,42 @@
   margin-top: 200px;
 }
 
+.header .tablist {
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.add {
+    float: right;
+    margin: 15px 10px;
+    height: 35px;
+    width: 35px;
+}
+
+/* tab切换 */
+.tablist .tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 25%;
+    margin: 7.5px 0px;
+    border-right: 1px solid #eceff4;
+    float: left
+}
+
+.tab .content{
+    width: 25px;
+    height: 50px;
+    font-size: 12px;
+    color: #B3B3B3;
+}
+
+.tab .image {
+    width: 25px;
+    height: 25px;
+    margin-top: 10px;
+}
 

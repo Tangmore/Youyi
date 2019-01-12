@@ -1,9 +1,28 @@
 <!--pages/profile/profile.wxml-->
+<template name="tab1">
+    <view>
+    </view>
+</template>
+
+<template name="tab2">
+    <view>
+    </view>
+</template>
+
+<template name="tab3">
+    <view>
+    </view>
+</template>
+
+
+
 <view>
 <!-- 头像 -->
   <view class='avatar' bindtap='onMusicTap'>
       <image src="{{isPlaying?'http://127.0.0.1:3003/img/avatar-active.jpg':'http://127.0.0.1:3003/img/avatar.png'}}" lazy-load  mode='aspectFill'></image>
   </view>
+
+   <image class="add" mode="aspectFill" src="../static/icons/add.png" bindtap="touchAdd"></image>
 
 <!-- 获取头像信息 -->
   <!-- <view class="userinfo avatar">
@@ -15,29 +34,25 @@
     </block>
   </view> -->
 
-  
-
-
 <!-- 个人列表 -->
-<view class='divider'></view>
+<!-- <view class='divider'></view> -->
 <!-- 服务条款 -->
-<view class='cell'>
-    <view class='cell-item'>个人资料</view>
-    <view class='cell-item arrow'>我的优惠券</view>
-</view>
-<view class='divider'></view>
-<!-- 常见问题 -->
-<view class='cell'>
-    <view class='cell-item arrow'>常见问题</view>
-    <view class='cell-item arrow'>使用条款</view>
-    <view class='cell-item arrow'>收货地址</view>
-    <view class='cell-item arrow'>关于我们</view>
-</view>
-<view class='divider'></view>
-<!-- 设置 -->
-<view class='cell'>
-    <view class='cell-item arrow'>设置</view>
- </view>
- <view class='divider'></view>
+<!-- <view class='cell'>
+    <view class='cell-item arrow'>日记</view>
+    <view class='cell-item arrow'>收藏</view>
+    <view class='cell-item arrow'>喜欢</view>
+    <view class='cell-item arrow'>更多</view>
+  <view class='cell-item arrow'>设置</view>
+</view> -->
+
+  <view class="tablist">
+      <view wx:for="{{tabs}}" wx:for-index="idx" class="tab" bindtap="touchTab" style="{{item.extraStyle}}" id="{{idx}}">
+        <view class="content" style="color:{{highLightIndex == idx ? '#54BFE2' : ''}};">
+          <image class="image" mode="aspectFit" src="{{highLightIndex == idx ? item.iconActive :  item.icon}}"></image>
+          <view style="margin-top:2px;">{{item.title}}</view>
+        </view>
+      </view>
+    </view>
+  <template is="{{currentTab}}"></template>
 </view>
 
