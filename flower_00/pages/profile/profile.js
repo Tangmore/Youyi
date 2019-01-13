@@ -47,10 +47,6 @@ Page({
 //     })
 //   }
 // },
-onGetAvatar(){
-    
-},
-
 
   /**
    * 点击tab项事件
@@ -101,38 +97,28 @@ titleInput(event) {
    * 页面的初始数据
    */
   data: {
-    isPlaying:false,
-
     /*------------tab---------------- */
     tabs: tabs,
     highLightIndex:0 , //默认显示第一个
 
     /*------------模态输入框------------- */
     modalShowStyle: "", // 模态对话框样式 
-    diaryTitle: "", // 待新建的日记标题
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    diaryTitle: "",// 待新建的日记标题
+    avatarImg:'',
+    nickName:''
   },
-
-
 
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-        // 查看是否授权
-    wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success(res) {
-              console.log(res.userInfo)
-            }
-          })
-        }
-      }
-    })
+      // console.log(app.globalData.userInfo.avatarUrl)
+      var info=app.globalData.userInfo;
+      this.setData({
+        avatarImg:info.avatarUrl,
+        nickName:info.nickName
+      })
   }, 
 
 

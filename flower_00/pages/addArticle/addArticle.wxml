@@ -1,2 +1,112 @@
-<!--pages/addArticle/addArticle.wxml-->
-<text>pages/addArticle/addArticle.wxml</text>
+<view class="container">
+    <view class="content">
+        <!-- 日期选择器 -->
+        <view class="calendar">
+            <view class="date">
+                <picker mode="date" value="{{dateValue}}"
+                start="2018-01-01" end="2999-12-12"
+                bindchange="bindDateChange">
+                {{dateValue}}
+                </picker>
+        </view>
+        </view>
+        <!-- 文本textarea -->
+        <view class="input-box" bindtap="bindclick">
+            <textarea  bindinput="input" name="name" rows="80" 
+                cols="100" value="{{content}}" placeholder="记录美好...." 
+                style="font-size:{{fontSize}};color: {{fontColor}}">
+            </textarea>
+        </view>
+        <view class="saveButton" bindtap="save"></view>
+    </view>
+
+<!-- 定位 -->
+  <view class="location" style="{{locationStyle}}" 
+ bindtap="getLocation">{{location}}</view>
+
+ <!-- 底部tabbar -->
+  <view class="operate-box">
+    <view class="operation-list flex">
+      <view class="item" bindtap="fontShowHide">
+        <image src="http://127.0.0.1:3003/dairy/font.png"></image>
+      </view>
+      <view class="item" bindtap="photoShowHide">
+        <image src="http://127.0.0.1:3003/dairy/carema.png"></image>
+      </view>
+      <view class="item" >
+          <image src="http://127.0.0.1:3003/dairy/record.png"></image>
+      </view>      
+      <view class="item" >
+        <image src="http://127.0.0.1:3003/dairy/emoji.png"></image>
+      </view>
+    </view>
+
+
+    <!-- 设置字体大小颜色盒子 -->
+    <view class="font-box {{fontShow?'emoji-move-in':'emoji-move-out'}}">   
+         
+        <view class="font">
+          <text class="text">字体</text>
+          <view class="family-item">
+            <view class="fontFamily">粉粉</view>
+            <view>
+              <image src="http://127.0.0.1:3003/dairy/selected.png"
+               class="selected"></image>
+            </view>
+          </view>
+        </view>
+
+        <view class="font">
+          <text>字号</text>
+          <view class="size">
+            <block wx:for="{{sizes}}" wx:key="item">
+              <view class="size-item">
+                <view class="fontSize" id="{{item.index}}"
+                bindtap="changeFont" data-fontsize="{{item.size}}"
+                 style="font-size:{{item.size}}">Aa</view>
+                <view  wx:if="{{item.selected == true}}">
+                  <image src="http://127.0.0.1:3003/dairy/selected.png"
+                   class="selected"></image>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+
+        <view class="font">
+            <view class="color">
+              <scroll-view scroll-x="true" bindscroll="scrollLeft"
+               scroll-left="{{scrollLeft}}">
+                <block wx:for="{{color}}" wx:key="item">
+                    <view class="color-item">
+                      <view class="fontColor" id="{{index}}" 
+                      bindtap="changeColor" data-color="{{item.color}}"
+                       style="background-color: {{item.color}};"></view>
+                      <view  wx:if="{{item.selected == true}}">
+                        <image src="http://127.0.0.1:3003/dairy/selected.png" 
+                        class="selected"></image>
+                      </view>
+                    </view>
+                </block>
+              </scroll-view>
+          </view>
+        </view>
+    </view>  
+
+    
+  <!-- 添加图片盒子 -->
+    <view class="photo-box {{photoShow ? 'emoji-move-in' : 'emoji-move-out'}}">
+      <scroll-view scroll-x="true" bindscroll="photoScroll">
+        <block wx:for="{{photos}}"  wx:key="item">
+          <view class="photo-cell" >
+            <view class="delete" id="{{index}}" bindtap="deletePhoto"></view>
+            <image class="touch-active" bindtap="photoChoose"
+             src="{{item}}"></image>
+          </view>
+        </block>
+        <view class="addButton" bindtap="addPhoto"></view>
+        <text class="desc">添加图片</text>
+      </scroll-view>
+    </view>
+</view>
+ </view>

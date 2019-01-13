@@ -1,1 +1,27 @@
 /* pages/authorize/authorize.wxss */
+.authorize{
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.authorize image{
+    width: 200px;
+    height: 200px;
+    margin: 30px auto;
+}
+.authorize .auto{
+    font-size: 18px;
+}
+.authorize text{
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 10px;    
+}
+.authorize button{
+    width: 94%;
+    margin-bottom: 8px;
+}
+
+

@@ -35,6 +35,16 @@ console.log('服务器启动成功，3003port')
 //app.js vue_app_server
 app.use(express.static(__dirname+"/public"))
 app.use(express.static(__dirname+"/upload"))
+
+//获取banner
+app.get('/banner',(req,res)=>{
+    var sql='select *from banner';
+    pool.query(sql,(err,result)=>{
+      if(err) throw err;
+      res.send(result);
+    }) 
+})
+
 //分页显示鲜花列表
  //1:获取参数
 app.get("/findshops",(req,res)=>{

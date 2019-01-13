@@ -1,10 +1,11 @@
 {
   "pages": [
-        "pages/authorize/authorize",
-    "pages/profile/profile",
+        "pages/home/home",
+    "pages/addArticle/addArticle",
+      "pages/authorize/authorize",
+      "pages/profile/profile",
     "pages/article/article",
     "pages/addMessage/addMessage",
-    "pages/home/home",
     "pages/gallery/gallery",
     "pages/flowers/flowers",
     "pages/message/message",
@@ -13,9 +14,7 @@
     "pages/logs/logs",
     "pages/joke/joke",
     "pages/gift/gift",
-    "pages/floDetail/floDetail",
-    "pages/addArticle/addArticle"
-
+    "pages/floDetail/floDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

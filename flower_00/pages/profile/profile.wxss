@@ -3,17 +3,22 @@
   position: relative;
 }
 .avatar{
-  background-color: rgba(238, 230, 230, 0.6);
+  background-color: rgba(243, 188, 171, 0.6);
   height: 400rpx;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
-.avatar image{
+.avatar .avatarImg{
   width: 190rpx;
   height: 190rpx;
   border-radius: 50%;
-  border: 3px solid rgba(0, 0, 0, .3);
+  border: 1px solid #ccc;
+}
+.avatar .nickName{
+    position: absolute;
+    bottom: 10px;
 }
 .profileBox .add {
   position: absolute;

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2019-01-10 13:18:48
+-- Generation Time: 2019-01-12 13:08:30
 -- 服务器版本： 10.1.28-MariaDB
--- PHP Version: 5.6.32
+-- PHP Version: 7.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,10 +21,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `youyi`
 --
-SET NAMES UTF8;
+set names utf8;
+drop database if EXISTS youyi;
+CREATE database youyi CHARSET=utf8;
+use youyi;
+-- --------------------------------------------------------
 
-CREATE DATABASE youyi CHARSET=UTF8;
-USE youyi;
+--
+-- 表的结构 `banner`
+--
+
+CREATE TABLE `banner` (
+  `id` int(11) NOT NULL,
+  `img_url` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `banner`
+--
+
+INSERT INTO `banner` (`id`, `img_url`) VALUES
+(1, 'http://127.0.0.1:3003/img/banner/banner01.png'),
+(2, 'http://127.0.0.1:3003/img/banner/banner02.png'),
+(3, 'http://127.0.0.1:3003/img/banner/banner03.png'),
+(4, 'http://127.0.0.1:3003/img/banner/banner04.png'),
+(5, 'http://127.0.0.1:3003/img/banner/banner05.png'),
+(6, 'http://127.0.0.1:3003/img/banner/banner06.png');
+
 -- --------------------------------------------------------
 
 --
@@ -221,6 +244,12 @@ INSERT INTO `yy_message` (`id`, `title`, `ctime`, `img_url`, `desc1`, `content`)
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `banner`
+--
+ALTER TABLE `banner`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `gallery`

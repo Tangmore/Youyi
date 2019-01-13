@@ -20,24 +20,16 @@ Page({
 
   },
   data: {
-    list: [
-      { id: 1, img_url: app.globalData.baseUrl+"img/banner/banner01.png" },
-      { id: 2, img_url: app.globalData.baseUrl+"img/banner/banner02.png" },
-      { id: 3, img_url: app.globalData.baseUrl+"img/banner/banner03.png" },
-      { id: 4, img_url: app.globalData.baseUrl+"img/banner/banner04.png" },
-      { id: 5, img_url: app.globalData.baseUrl+"img/banner/banner05.png" },
-      { id: 6, img_url: app.globalData.baseUrl+"img/banner/banner06.png" }
-     ],
-
-      navlist:[
+    list: [],
+    navlist:[
       {id:1,img_url: app.globalData.baseUrl+"icons/grid-1.png",title:'鲜花'},
       {id:2,img_url: app.globalData.baseUrl+"icons/grid-3.png",title:'画廊'},
       {id:3,img_url: app.globalData.baseUrl+"icons/grid-4.png",title:'美文'},
-      {id: 4, img_url: app.globalData.baseUrl+"icons/grid-5.png", title:'网址'},
+      {id:4,img_url: app.globalData.baseUrl+"icons/grid-5.png", title:'网址'},
       {id:5,img_url: app.globalData.baseUrl+"icons/grid-6.png",title:'论坛'},
-      {id: 6, img_url: app.globalData.baseUrl+"icons/grid-2.png", title: '...' },],
+      {id:6,img_url: app.globalData.baseUrl+"icons/grid-2.png", title: '...' }],
       
-      btnList:[{ id: 1, img_url: app.globalData.baseUrl+"img/link-01.png" },
+    btnList:[{ id: 1, img_url: app.globalData.baseUrl+"img/link-01.png" },
       { id: 2, img_url: app.globalData.baseUrl+"img/link-02.png" }]
       },
   
@@ -46,6 +38,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    wx.request({
+      url: app.globalData.baseUrl+'banner',
+      methods: 'get',
+      success: (res)=> {
+          // console.log(res)
+          this.setData({
+            list:res.data
+          })
+      }
+    })
   
   },
 

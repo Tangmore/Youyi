@@ -1,1 +1,271 @@
-/* pages/addArticle/addArticle.wxss */
+.container {
+  background-size: cover;
+}
+.content {
+  width: 100%;
+  margin-bottom: 60px;
+}
+/* 日期选择 */
+.date{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #ffa0c1;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #666;
+    background: #fff;
+    opacity: .8;
+    text-align: center;
+  }
+  /* 保存 */
+.saveButton {
+    width: 30px;
+    height: 30px;
+    background: url(http://127.0.0.1:3003/dairy/save.png);
+    background-size: cover;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+/* 文本 */
+.input-box{
+  background-color: #fff;
+  width: 100%;
+  height: 500px;
+  border-radius: 5px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.input-box textarea{
+  width: 100%;
+  margin-top: 100rpx;
+  font-size: 28rpx;
+}
+
+
+/* 定位 */
+.location{
+    position: fixed;
+    bottom: 70px;
+    left: 10px;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    font-size: 12px;
+    padding-left:20px;
+    box-sizing: border-box;
+    background:#fff
+     url(http://127.0.0.1:3003/dairy/location.png) left no-repeat;
+    background-size: 20px 20px;
+  }
+
+
+ /* 底部tabbar  */
+.operate-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+.operation-list{
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background: #f00;
+  background-color: #fff;
+  border-top: 1px solid #efefef;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.operation-list .item{
+  width: 25%;
+  text-align: center;
+}
+.operation-list .item image{
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+}
+
+/* 文字样式 */
+.font-box{
+  width: 100%;
+  height: 200px;
+  background-color: #efefef;
+  margin-bottom: -200px;
+  z-index: 99999;
+}
+.font-box .font{
+  /*background-color: #f00000;*/
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+.font-box .font text{
+  margin: 0 10px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  z-index: 99999;
+}
+.selected{
+   position: absolute;
+   width: 20px;
+   height: 20px;
+   right: 0;
+   bottom: 0;
+}
+
+
+.family-item,.size-item,.color-item{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  position: relative;
+}
+.fontFamily,.fontSize,.fontColor{
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid #efefef;
+  border-radius: 5px;
+  font-size:12px;
+}
+
+
+
+
+.font-box .font .size{
+  display: inline-block;
+}
+
+
+
+.color scroll-view {
+  margin-top: 10px;
+  width: 100%;
+  white-space: nowrap;
+}
+.color scroll-view .color-item{
+  display: inline-block;
+}
+
+
+
+/* 图片 */
+.photo-box {
+  background: #efefef;
+  position: relative;
+  height: 200px;
+  padding: 5px 0;
+  box-sizing: border-box;
+  margin-bottom: -200px;
+}
+.photo-box scroll-view {
+  width: 100%;
+  white-space: nowrap;
+}
+.photo-box scroll-view .photo-cell {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  box-sizing: border-box;
+  position: relative;
+}
+.photo-box .addButton {
+  width: 100px;
+  height: 100px;
+  background: url(http://127.0.0.1:3003/dairy/addPhoto.png) no-repeat center center;
+  background-size: 50px 50px;
+  margin: 0 auto;
+}
+.photo-box .desc {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+}
+.photo-box .photo-cell image {
+  width: 80px;
+  height: 80px;
+}
+.photo-box .photo-cell .delete {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  background: url(http://127.0.0.1:3003/dairy/delete.png) no-repeat;
+  background-size: cover;
+  z-index: 1000;
+}
+
+
+.emoji-move-in {
+  -webkit-animation: emoji-move-in 0.3s forwards;
+  animation: emoji-move-in 0.3s forwards;
+}
+
+.emoji-move-out {
+  -webkit-animation: emoji-move-out 0.3s forwards;
+  animation: emoji-move-out 0.3s forwards;
+}
+
+.no-emoji-move {
+  -webkit-animation: none;
+  animation: none;
+}
+
+@-webkit-keyframes emoji-move-in {
+  0% {
+    margin-bottom: -200px;
+  }
+
+  100% {
+    margin-bottom: 0;
+  }
+}
+
+@keyframes emoji-move-in {
+  0% {
+    margin-bottom: -200px;
+  }
+
+  100% {
+    margin-bottom: 0;
+  }
+}
+
+@-webkit-keyframes emoji-move-out {
+  0% {
+    margin-bottom: 0;
+  }
+
+  100% {
+    margin-bottom: -200px;
+  }
+}
+
+@keyframes emoji-move-out {
+  0% {
+    margin-bottom: 0;
+  }
+
+  100% {
+    margin-bottom: -200px;
+  }
+}
