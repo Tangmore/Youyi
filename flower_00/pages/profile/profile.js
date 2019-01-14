@@ -73,7 +73,7 @@ touchAdd() {
 touchAddNew() {
   this.setData({modalShowStyle: ""});
   wx.navigateTo({
-      url: "/pages/article/article?title=" + this.data.diaryTitle,
+      url: "/pages/addArticle/addArticle?title=" + this.data.diaryTitle,
   });
 },
 /**
@@ -113,12 +113,11 @@ titleInput(event) {
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-      // console.log(app.globalData.userInfo.avatarUrl)
       var info=app.globalData.userInfo;
-      this.setData({
-        avatarImg:info.avatarUrl,
-        nickName:info.nickName
-      })
+        this.setData({
+          avatarImg:info.avatarUrl,
+          nickName:info.nickName
+       })     
   }, 
 
 

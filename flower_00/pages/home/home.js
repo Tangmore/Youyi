@@ -38,7 +38,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.navigateTo({
+      url: '/pages/authorize/authorize',
+    })
+  
     wx.request({
       url: app.globalData.baseUrl+'banner',
       methods: 'get',
@@ -49,6 +52,8 @@ Page({
           })
       }
     })
+
+   
   
   },
 

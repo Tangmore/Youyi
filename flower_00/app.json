@@ -1,11 +1,10 @@
 {
   "pages": [
-        "pages/home/home",
     "pages/addArticle/addArticle",
-      "pages/authorize/authorize",
-      "pages/profile/profile",
+    "pages/home/home",
+    "pages/authorize/authorize",
+    "pages/profile/profile",
     "pages/article/article",
-    "pages/addMessage/addMessage",
     "pages/gallery/gallery",
     "pages/flowers/flowers",
     "pages/message/message",
