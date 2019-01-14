@@ -1,10 +1,13 @@
 <!--pages/authorize/authorize.wxml-->
 <view wx:if="{{canIUse}}" class="authorize">
-    <image src='http://127.0.0.1:3003/img/auth1.gif'></image>
+    <image src='http://148.70.65.234:3003/img/auth1.gif'></image>
     <text class="auto">申请获取以下权限</text>
     <text>获得你的公开信息(昵称，头像等)</text>
-    <button open-type="getUserInfo" type="primary" 
-    bindgetuserinfo="bindGetUserInfo" >授权登录</button>
+    <button open-type="getUserInfo" 
+    bindgetuserinfo="bindGetUserInfo"></button>
+    
+    <button bindtap='toProfile' type="primary" >授权登录</button>
+    <!-- <button bindtap='toHome'>返回首页</button> -->
 </view>
  
 <view wx:else>请升级微信版本</view>

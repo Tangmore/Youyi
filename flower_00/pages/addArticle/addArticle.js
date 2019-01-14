@@ -1,25 +1,36 @@
 const util=require('../../utils/util.js');
 const currentdate = util.getNowFormatDate();
-// var QQMapWX = require('../../lib/qqmap-wx-jssdk.js');
-// var demo = new QQMapWX({
-//   key: 'UNKBZ-6PORG-L4VQ3-I4OPG-IXLXO-Q4BVD'
-// })
+var QQMapWX = require('../../lib/qqmap-wx-jssdk.js');
+var demo = new QQMapWX({
+  key: 'E5ZBZ-XE5KW-FWFRA-ORVB6-BEG5H-GCFFX'
+});
+const app=getApp();
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    // 日期
     picker1Value: 0,
     dateValue: currentdate,
-    isLoad: true,
+    // tabbar
     isShow: false,
     photoShow: false,
-    fontShow: false,
+    fontShow: false,    
+    
+    diaryTitle:'',//文本标题
     content:'',  //文本内容
+    // 位置
     locationStyle: '',
     location: "点击添加位置",
-    fontSize: '',
+    // 图片
     photos: [],
+    phCount:0,
+    newPhotos:[],
+    // 文字样式
+    fontSize: '',
+    fontColor: '',
+
     sizes: [
       {index: 0,size: "12px",selected: false},
       {index: 1,size: "14px",selected: false},
@@ -55,14 +66,14 @@ Page({
 /**
  * 文本
  */
-  bindclick: function () {
+  bindclick() {
     this.setData({
       isShow: false,
       photoShow: false,
       fontShow: false
     })
   },
-    input: function (e) {
+  input: function (e) {
       let that = this
       // console.log(e.detail.value)
       let content = e.detail.value
@@ -86,7 +97,7 @@ Page({
         })
         console.log(this.data);
       },
-  fontShowHide: function () {
+  fontShowHide() {
     let that = this;
     that.setData({
       isShow: false,
@@ -111,116 +122,153 @@ Page({
         console.log(this.data);
       },
 
-addPhoto: function () {
+  addPhoto(){
     let that = this
     wx.chooseImage({
-      count: 9, // 可根据情况自由设置，默认9
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+      count: 9,  
+      // 可以指定是原图还是压缩图，默认二者都有
+      sizeType: ['original', 'compressed'], 
+         // 可以指定来源是相册还是相机，默认二者都有
+      sourceType: ['album', 'camera'], 
+      success:(res)=>{
+        // 返回选定照片的本地文件路径列表
         var tempFilePaths = res.tempFilePaths;
-        console.log(tempFilePaths)
-        that.setData({
-          photos: tempFilePaths
-        })
+        // console.log(tempFilePaths)
+        var photos=that.data.photos;
+        let phCount=photos.length;
+        this.setData({phCount});
+
+        // console.log(len)
+        if (phCount==9){
+            wx.showToast({
+              title: '最多可添加9张图片...',
+              icon: 'none',
+              duration: 1000
+            })
+            return;
+        }else{
+            photos.push(tempFilePaths);
+            phCount++;
+            that.setData({
+              photos,
+              phCount
+            })
+        }
+       
       }
     })
   },
  deletePhoto(e) {
-    let that = this
+    let that = this;
     // console.log(e.currentTarget.id)
-    let id = e.currentTarget.id
+    let id = e.currentTarget.id;
+    let phCount=that.data.phCount-1;
     that.data.photos.splice(id, 1);
     that.setData({
+      phCount,
       photos: that.data.photos
     })
   },
-  photoShowHide() {
-    let that = this
+
+photoShowHide() {
+    let that = this;
     that.setData({
       isShow: false,
       fontShow: false,
-      recordShow: false,
       photoShow: !this.data.photoShow
-
     })
   },
-  // getLocation() {
-  //   let that = this;
-  //   wx.getLocation({
-  //     type: 'wgs84',
-  //     success: (res) => {
-  //       var latitude = res.latitude
-  //       var longitude = res.longitude
-  //       demo.reverseGeocoder({
-  //         location: {
-  //           latitude,
-  //           longitude
-  //         },
-  //         success: function (res) {
-  //           console.log(res.result)
-  //           var location = res.result.address_component.province 
-  //           + res.result.address_component.city
-  //           that.setData({
-  //             location,
-  //             locationStyle: 'background-image:url(./../../images/blue.png);color:#1296db;'
-  //           });
-  //           wx.setStorage({
-  //             key: "location",
-  //             data: location
-  //           })
+ 
+  // 定位
+getLocation() {
+    let that = this;
+    wx.getLocation({
+      type: 'wgs84',
+      success: (res) => {
+        var latitude = res.latitude;
+        var longitude = res.longitude;
+        demo.reverseGeocoder({
+          location: {
+            latitude,
+            longitude
+          },
+          success(res) {
+            console.log(res.result)
+            var location = res.result.address_component.province 
+            + res.result.address_component.city
+            that.setData({
+              location,   
+              locationStyle: 'background-image:url(http://148.70.65.234:3003/dairy/blue.png); color:#1296db;'
+            });
+            wx.setStorage({
+              key: "location",
+              data: location
+            })
 
-  //         },
-  //         fail: function (res) {
-  //           console.log(res);
-  //         },
-  //         complete: function (res) {
-  //           console.log(res);
-  //         }
-  //       });
-  //     }
-  //   })
-  // },
+          },
+          fail(res) {
+            console.log(res);
+          },
+          complete(res) {
+            console.log(res);
+          }
+        });
+      }
+    })
+  },
 
-  //   save(event) {
-//     let that = this;
-//     // console.log(event.detail.value);
-//     var content = event.detail.value;
-//     console.log(content)
-//     if (content !== '') {
-//       wx.setStorage({
-//         key: "diaryContent",
-//         data: that.data.content
-//       });
-//     }
-//     wx.setStorage({
-//       key: 'images',
-//       data: that.data.photos
-//     })
-//     wx.showToast({
-//       title: '保存成功',
-//       icon: 'success',
-//       duration: 2000,
-//       success: function () {
 
-//       }
-//     });
-//     setTimeout(function () {
-//       wx.hideLoading();
-//       wx.navigateBack();
-//     }, 2000)
-//   },
+save() {
+  let that = this;
+  // console.log(this.data.content);
+  let photos=that.data.photos;
+  let len=photos.length;
+  let progress=0; 
+  if(this.data.content){
+      for(var i=0;i<len;i++){
+        wx.uploadFile({
+          url: app.globalData.baseUrl+'upload',
+          filePath: photos[i][0],
+          name: 'mypic',
+          header:{"Content-Type":"multipart/form-data"},//修改请求头
+          formData:{pid:12,pname:'郁金香'},
+          success:function(res){
+          let json=JSON.parse(res.data);
+            let url=json.url;
+          console.log(json.url)
+          let newPhotos=that.data.newPhotos;
+          // console.log(newPhotos)
+          newPhotos.push(url);  
+          that.setData({newPhotos,newPhotos})
+            //  if(i>=len){
+            //    progress=50;
+            //    return;
+            //  }
+            console.log('新的：'+newPhotos)
+          }
+        })
+      }
+  }else{
+       wx.showToast({
+          title: '文本不能为空哦',
+          icon: 'none',
+          duration: 2000
+        });
+        //  setTimeout(function () {
+        //   wx.hideLoading();
+        //   wx.navigateBack();
+        // }, 2000)
+  }
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     // console.log(options)
-    // this.setData({
-    //   content: options.content
-    // })
-
+    this.setData({
+    //  diaryTitle:options.title
+    })
   },
 
   /**

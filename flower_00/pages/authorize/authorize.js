@@ -7,17 +7,19 @@ Page({
   onLoad: function() {
     // 查看是否授权
     wx.getSetting({
-      success: function(res){
+      success(res){
         if (res.authSetting['scope.userInfo']) {
+          //已经授权 可以直接调用getUserInfo
           wx.getUserInfo({
-            success: function(res) {
+            success(res) {
               app.globalData.userInfo=res.userInfo;
-              console.log( app.globalData.userInfo)
               //用户已经授权过
-              wx.switchTab({
-                url: '/pages/home/home'
-                });
+              app.globalData.isAuthorize=true;
             }
+          })
+        }else{
+          wx.navigateTo({
+            url: '/pages/autorize/autorize',
           })
         }
       }
@@ -25,14 +27,21 @@ Page({
   },
   bindGetUserInfo: function(e) {
     if (e.detail.userInfo){
-      // 用户按了允许授权按钮
-      app.globalData.userInfo=e.detail.userInfo;
-              console.log(e.detail.userInfo)
-              wx.switchTab({
-                url: '/pages/home/home'
-                }); 
-    } else {
-      return;
-    }
+      // 用户按了允许授权按钮   
+      console.log(e.detail.userInfo)
+    } 
+  },
+  toProfile(){
+    // console.log('授权登录')
+    wx.switchTab({
+      url: '/pages/home/home'
+    })
+
   }
+  // toHome(){
+  //   // console.log('未授权登录')
+  //    wx.switchTab({
+  //       url: '/pages/home/home'
+  //   });
+  // }
 })
