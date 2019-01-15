@@ -5,9 +5,9 @@ var demo = new QQMapWX({
   key: 'E5ZBZ-XE5KW-FWFRA-ORVB6-BEG5H-GCFFX'
 })
 Page({
-  /**
-   * 页面的初始数据
-   */
+/**
+ * 页面的初始数据
+ */
   data: {
     picker1Value: 0,
     dateValue: currentdate,
@@ -44,9 +44,9 @@ Page({
       {index: 9,color: '#C79EFE',selected: false},
       {index: 10,color: '#36f0c1',selected: false}]
   },
-  /**
-   * 日历
-   */
+/**
+  * 日历
+*/
   bindDateChange(event) {
     wx.setStorage({
       key: "date",
@@ -151,7 +151,7 @@ Page({
       }
     })
   },
- deletePhoto(e) {
+  deletePhoto(e) {
     let that = this;
     // console.log(e.currentTarget.id)
     let id = e.currentTarget.id;
@@ -163,7 +163,7 @@ Page({
     })
   },
 
-photoShowHide() {
+  photoShowHide() {
     let that = this;
     that.setData({
       isShow: false,
@@ -171,9 +171,8 @@ photoShowHide() {
       photoShow: !this.data.photoShow
     })
   },
- 
   // 定位
-getLocation() {
+  getLocation() {
     let that = this;
     wx.getLocation({
       type: 'wgs84',
@@ -191,13 +190,13 @@ getLocation() {
             + res.result.address_component.city
             that.setData({
               location,   
-              locationStyle: 'background-image:url(http://148.70.65.234:3003/dairy/blue.png); color:#1296db;'
+              locationStyle: 
+              'background-image:url(http://148.70.65.234:3003/dairy/blue.png); color:#1296db;'
             });
             wx.setStorage({
               key: "location",
               data: location
             })
-
           },
           fail(res) {
             console.log(res);
@@ -209,9 +208,10 @@ getLocation() {
       }
     })
   },
-
-
-save() {
+/**
+ * 保存日记
+ */
+  save() {
     let that = this;
     console.log(this.data.content);
     // if (content !== '') {
