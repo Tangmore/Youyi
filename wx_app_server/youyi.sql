@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2019-01-12 13:08:30
+-- Generation Time: 2019-01-14 18:22:36
 -- 服务器版本： 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -21,10 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `youyi`
 --
-set names utf8;
-drop database if EXISTS youyi;
-CREATE database youyi CHARSET=utf8;
-use youyi;
+
 -- --------------------------------------------------------
 
 --
@@ -169,6 +166,18 @@ INSERT INTO `gallery` (`id`, `img_url`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `diary` text NOT NULL,
+  `ppid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `yy`
 --
 
@@ -255,6 +264,12 @@ ALTER TABLE `banner`
 -- Indexes for table `gallery`
 --
 ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --

@@ -27,13 +27,8 @@ Page({
       {id:3,img_url: app.globalData.baseUrl+"icons/grid-4.png",title:'美文'},
       {id:4,img_url: app.globalData.baseUrl+"icons/grid-5.png", title:'网址'},
       {id:5,img_url: app.globalData.baseUrl+"icons/grid-6.png",title:'论坛'},
-      {id:6,img_url: app.globalData.baseUrl+"icons/grid-2.png", title: '...' }],
-      
-    btnList:[{ id: 1, img_url: app.globalData.baseUrl+"img/link-01.png" },
-      { id: 2, img_url: app.globalData.baseUrl+"img/link-02.png" }]
-      },
-  
-
+      {id:6,img_url: app.globalData.baseUrl+"icons/grid-2.png", title: '...' }]
+    },
   /**
    * 生命周期函数--监听页面加载
    */

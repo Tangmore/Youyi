@@ -80,7 +80,6 @@
     width: 25%;
     margin: 7.5px 0px;
     border-right: 1px solid #eceff4;
-    float: left
 }
 
 .tab .content{

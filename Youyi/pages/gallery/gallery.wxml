@@ -8,13 +8,15 @@
     <view class="galleryBox">
     <view class="left" >
         <view wx:for='{{imgList}}' wx:key='index'  wx:if='{{index%2==0}}'>
-            <image src='{{item.img_url}}' lazy-load mode="widthFix" ></image>
+            <image src='{{item.img_url}}' lazy-load mode="widthFix" 
+            data-url="{{item.img_url}}" bindtap='preView'></image>
         </view>
     </view>
 
     <view class="right" >
         <view wx:for='{{imgList}}' wx:key='index' wx:if='{{index%2==1}}'>
-            <image src='{{item.img_url}}' lazy-load mode="widthFix" ></image>
+            <image src='{{item.img_url}}' lazy-load 
+            data-url="{{item.img_url}}" bindtap='preView' mode="widthFix" ></image>
         </view> 
     </view>
 </view>

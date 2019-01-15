@@ -31,31 +31,6 @@ Page({
           wx.switchTab({
           url: '/pages/home/home'
        });
-
-       wx.login({
-        success:function(res){
-          console.log(res.code)
-          wx.request({
-            url: app.globalData.baseUrl+'getInfo',
-            data:{code:res.code},
-            header: {
-              'Content-Type': 'application/json'
-            },
-            success: function(res) {
-                console.log(res.data)
-                wx.switchTab({
-                  url: '/pages/home/home'
-                })
-            },
-            fail: function(res) {
-              console.log(res)
-            },
-            complete: function(res) {
-              console.log(res)
-            }
-          })
-        }
-      })
     } 
   }
 })

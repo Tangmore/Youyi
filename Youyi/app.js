@@ -10,6 +10,24 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          console.log(res.code)
+          wx.request({
+            url: this.globalData.baseUrl+'getInfo',
+            data:{code:res.code},
+            header: {
+              'Content-Type': 'application/json'
+            },
+            success: function(res) {
+                console.log(res.data)
+         
+            },
+            fail: function(res) {
+              console.log(res)
+            },
+            complete: function(res) {
+              console.log(res)
+            }
+          })
       }
     })
    

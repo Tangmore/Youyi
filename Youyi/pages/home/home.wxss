@@ -34,14 +34,5 @@
   height:30rpx;
   background-color:#f1f1f1; 
 }
-/**功能四:按钮**/
-.btnGroup{
-  display: flex; 
-  padding-top: 20px; 
-  justify-content: space-around;
-}
-.btnGroup image{
-  width:150px;
-  height: 110px;
-}
+
 

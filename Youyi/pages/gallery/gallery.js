@@ -28,14 +28,6 @@ Page({
             pageCount:res.data.pageCount,
             keypageCount:res.data.keypageCount
           })
-         //显示加载动画
-        // wx.showLoading({
-        //   title: '正在加载数据...',
-        // })
-        //卸载加载动画
-        // setTimeout(() => {
-        //   wx.hideLoading()
-        // }, 800)
       }
     })
   },
@@ -61,6 +53,27 @@ Page({
       })
       this.loadMore();
     }
+  },
+  /**
+   * 图片预览、分享、保存
+   */
+  preView(e){
+      var toUrl=e.target.dataset.url;
+      var imgList=this.data.imgList;
+      var newArr=[];
+      if(imgList.length!=0){
+        for(var item of imgList){
+          newArr.push(item.img_url);
+        }
+        wx.previewImage({
+          current:toUrl,
+          urls:newArr
+        })
+      }else{
+        return;
+      }
+    
+
   },
   /**
    * 页面的初始数据

@@ -15,11 +15,5 @@
          <text>{{item.title}}</text>
       </view>
    </view>
-   <!--分隔块-->
-   <view class="divider"></view>
-   <!--按钮-->
-    <view class="btnGroup">
-      <image src='{{item.img_url}}' wx:for="{{btnList}}" wx:key="index"></image>
-     </view>
   </view>
   
