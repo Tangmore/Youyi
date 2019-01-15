@@ -3,18 +3,22 @@ const currentdate = util.getNowFormatDate();
 var QQMapWX = require('../../lib/qqmap-wx-jssdk.js');
 var demo = new QQMapWX({
   key: 'E5ZBZ-XE5KW-FWFRA-ORVB6-BEG5H-GCFFX'
-})
+});
+const app=getApp();
 Page({
 /**
  * 页面的初始数据
  */
   data: {
+    // 日期
     picker1Value: 0,
     dateValue: currentdate,
-    isLoad: true,
+    // tabbar
     isShow: false,
     photoShow: false,
-    fontShow: false,
+    fontShow: false,    
+    
+    diaryTitle:'',//文本标题
     content:'',  //文本内容
     // 位置
     locationStyle: '',
@@ -22,8 +26,11 @@ Page({
     // 图片
     photos: [],
     phCount:0,
+    newPhotos:[],
     // 文字样式
     fontSize: '',
+    fontColor: '',
+
     sizes: [
       {index: 0,size: "12px",selected: false},
       {index: 1,size: "14px",selected: false},
@@ -208,27 +215,69 @@ Page({
       }
     })
   },
+
 /**
- * 保存日记
+ * 保存/上传日记内容
  */
-  save() {
-    let that = this;
-    console.log(this.data.content);
-    // if (content !== '') {
-    //    wx.setStorage({
-    //         key: "diaryContent",
-    //         data: that.data.content
-    //       });
-    //     }
-        // wx.showToast({
-        //   title: '保存成功',
-        //   icon: 'success',
-        //   duration: 2000
-        // });
-        // setTimeout(function () {
+save() {
+  let that = this;
+  // console.log(this.data.content);
+  let photos=that.data.photos;
+  let len=photos.length;
+  let progress=0; 
+  if(!this.data.content){
+    wx.showToast({
+      title: '文本不能为空哦',
+      icon: 'none',
+      duration: 2000
+    });
+    return;
+  }
+  if(len!=0){
+      this.upPic(len,photos);
+  }
+
+      //  wx.showToast({
+      //     title: '文本不能为空哦',
+      //     icon: 'none',
+      //     duration: 2000
+      //   });
+        //  setTimeout(function () {
         //   wx.hideLoading();
         //   wx.navigateBack();
         // }, 2000)
+ 
+  },
+  /**
+   * 上传图片
+   */
+  upPic(len,arr){
+    let that = this;
+    for(var i=0;i<len;i++){
+      wx.uploadFile({
+        url: app.globalData.baseUrl+'upload',
+        filePath: arr[i][0],
+        name: 'mypic',
+        header:{"Content-Type":"multipart/form-data"},//修改请求头
+        formData:{pid:12,pname:''},
+        success:function(res){
+        let json=JSON.parse(res.data);
+          let url=json.url;
+        console.log(json.url)
+        let newPhotos=that.data.newPhotos;
+        // console.log(newPhotos)
+        newPhotos.push(url);  
+        that.setData({newPhotos,newPhotos})
+          //  if(i>=len){
+          //    progress=50;
+          //    return;
+          //  }
+        
+          // var cons=Object.prototype.toString.call(newPhotos)
+          // console.log('新的：'+newPhotos)
+        }
+      })
+    }
   },
 
   /**
@@ -236,10 +285,9 @@ Page({
    */
   onLoad: function (options) {
     // console.log(options)
-    // this.setData({
-    //   content: options.content
-    // })
-
+    this.setData({
+    //  diaryTitle:options.title
+    })
   },
 
   /**

@@ -20,9 +20,9 @@ Page({
           filePath: files[0],
           name: 'mypic',
           header:{"Content-Type":"multipart/form-data"},//修改请求头
-          formData:{pid:12,pname:'郁金香'},
+          formData:{},
           success:function(res){
-            console.log(111)
+            console.log(res.data)
           }
         })
       },

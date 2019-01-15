@@ -4,9 +4,9 @@
     <text class="auto">申请获取以下权限</text>
     <text>获得你的公开信息(昵称，头像等)</text>
     <button open-type="getUserInfo" 
-    bindgetuserinfo="bindGetUserInfo"></button>
+    bindgetuserinfo="bindGetUserInfo"  type="primary">授权登录</button>
     
-    <button bindtap='toProfile' type="primary" >授权登录</button>
+    <!-- <button bindtap='toProfile' type="primary" >授权登录</button> -->
     <!-- <button bindtap='toHome'>返回首页</button> -->
 </view>
  

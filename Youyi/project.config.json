@@ -12,8 +12,8 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.2",
-	"appid": "wx51dd61975532c3be",
+	"libVersion": "2.5.0",
+	"appid": "wxd2329f10b3a123f2",
 	"projectname": "Youyi",
 	"debugOptions": {
 		"hidedInDevtools": []

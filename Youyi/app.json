@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/addArticle/addArticle",
     "pages/home/home",
     "pages/authorize/authorize",
+    "pages/addArticle/addArticle",
+    "pages/addMessage/addMessage",
     "pages/profile/profile",
     "pages/article/article",
     "pages/gallery/gallery",
