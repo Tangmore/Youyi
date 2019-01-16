@@ -1,37 +1,25 @@
-// function formatTime(date) {
-//   var year = date.getFullYear()
-//   var month = date.getMonth() + 1
-//   var day = date.getDate()
-
-//   var hour = date.getHours()
-//   var minute = date.getMinutes()
-//   var second = date.getSeconds()
-//   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-// }
-
-// function formatNumber(n) {
-//   n = n.toString()
-//   return n[1] ? n : '0' + n
-// }
+function formatNumber(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n  
+}
 
 // 日期转换
 function getNowFormatDate() {
         var date = new Date();
-        var seperator1 = "-";
-        var year = date.getFullYear();
-        var month = date.getMonth() + 1;
-        var strDate = date.getDate();
-        if (month >= 1 && month <= 9) {
-            month = "0" + month;
-        }
-        if (strDate >= 0 && strDate <= 9) {
-            strDate = "0" + strDate;
-        }
-        var currentdate = year  +seperator1 + month+ seperator1 + strDate;
-        return currentdate;
+        var year = date.getFullYear(),
+            month = date.getMonth() + 1,
+            strDate = date.getDate(),
+            hour = date.getHours(),
+            minute = date.getMinutes(),
+            second = date.getSeconds();  
+
+        month= month<=9?('0'+month):month;
+        strDate= strDate<=9?('0'+strDate):strDate;
+        var currentdate = [year, month,strDate].map(formatNumber).join('-');
+        var formatTime=[hour, minute, second].map(formatNumber).join(':')
+        return [currentdate,formatTime];
     }
 
 module.exports = {
-  // formatTime: formatTime,
   getNowFormatDate:getNowFormatDate
 }

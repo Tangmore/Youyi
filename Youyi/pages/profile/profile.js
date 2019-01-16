@@ -62,36 +62,10 @@ Page({
  * 点击新建日记按钮
  */ 
 touchAdd() {
-  this.setData({
-      modalShowStyle: "opacity:1"
+  wx.switchTab({
+    url: "/pages/addArticle/addArticle"
   })
 },
-
-/** 
- * 新建日记
- */ 
-touchAddNew() {
-  this.setData({modalShowStyle: ""});
-  wx.navigateTo({
-      url: "/pages/addArticle/addArticle?title=" + this.data.diaryTitle,
-  });
-},
-/**
- * 取消标题输入
- */
-touchCancel() {
-  this.setData({modalShowStyle: ""});
-  this.setData({diaryTitle: ""});
-}, 
-/**
- * 标题输入事件
- */
-titleInput(event) {
-  this.setData({
-      diaryTitle: event.detail.value,
-  })
-},
-
 
   /**
    * 页面的初始数据
@@ -100,14 +74,9 @@ titleInput(event) {
     /*------------tab---------------- */
     tabs: tabs,
     highLightIndex:0 , //默认显示第一个
-
-    /*------------模态输入框------------- */
-    modalShowStyle: "", // 模态对话框样式 
-    diaryTitle: "",// 待新建的日记标题
     avatarImg:'',
     nickName:''
   },
-
 
   /**
    * 生命周期函数--监听页面加载

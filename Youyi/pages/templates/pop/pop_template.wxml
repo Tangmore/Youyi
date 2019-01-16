@@ -1,0 +1,16 @@
+<!--pages/templates/pop_template.wxml-->
+  <!--一个全屏模态对话框-->
+   <template name='popUp' class="modal" style="{{modalShowStyle}}">
+         <view class="dialog">
+           <view class="modal-item diaryTitle" >请输入日记标题</view>
+           <view class="modal-item inputBox">
+            <input type="text" bindinput="titleInput" value="{{diaryTitle}}" placeholder="请输入日记标题"></input>
+           </view>
+           <view class="modal-button">
+             <view bindtap="touchAddNew">确定</view>
+             <view bindtap="touchCancel">取消</view>
+           </view>
+       </view>
+   </template> 
+
+     

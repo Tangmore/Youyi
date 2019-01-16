@@ -14,11 +14,10 @@ Page({
             success(res) { 
               //用户已经授权过
               app.globalData.userInfo=res.userInfo;
+              wx.switchTab({
+                url: '/pages/home/home',
+              })
             }
-          })
-        }else{  
-          wx.navigateTo({
-            url: '/pages/authorize/authorize',
           })
         }
       }

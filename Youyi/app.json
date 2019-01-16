@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/addArticle/addArticle",
     "pages/home/home",
     "pages/authorize/authorize",
-    "pages/addArticle/addArticle",
     "pages/addMessage/addMessage",
     "pages/profile/profile",
     "pages/article/article",
@@ -10,10 +10,6 @@
     "pages/flowers/flowers",
     "pages/message/message",
     "pages/product/product",
-    "pages/shoplist/shoplist",
-    "pages/logs/logs",
-    "pages/joke/joke",
-    "pages/gift/gift",
     "pages/floDetail/floDetail"
   ],
   "window": {
@@ -32,13 +28,26 @@
       },
       {
         "pagePath": "pages/message/message",
+        "text": "动态",
+        "iconPath": "pages/static/tabbar/collect.png",
+        "selectedIconPath": "pages/static/tabbar/collect-active.png"
+      },
+      {
+        "pagePath": "pages/addArticle/addArticle",
+        "text": "发表",
+        "iconPath": "pages/static/tabbar/add.png",
+        "selectedIconPath": "pages/static/tabbar/add.png"
+      },
+      {
+        "pagePath": "pages/message/message",
         "text": "消息",
         "iconPath": "pages/static/tabbar/message.png",
         "selectedIconPath": "pages/static/tabbar/message-active.png"
       },
+     
       {
         "pagePath": "pages/profile/profile",
-        "text": "个人中心",
+        "text": "我的",
         "iconPath": "pages/static/tabbar/profile.png",
         "selectedIconPath": "pages/static/tabbar/profile-active.png"
       }

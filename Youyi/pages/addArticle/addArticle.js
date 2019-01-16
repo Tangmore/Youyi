@@ -1,5 +1,6 @@
 const util=require('../../utils/util.js');
-const currentdate = util.getNowFormatDate();
+const currentdate = util.getNowFormatDate()[0];
+const formatTime=util.getNowFormatDate()[1];
 var QQMapWX = require('../../lib/qqmap-wx-jssdk.js');
 var demo = new QQMapWX({
   key: 'E5ZBZ-XE5KW-FWFRA-ORVB6-BEG5H-GCFFX'
@@ -14,11 +15,9 @@ Page({
     picker1Value: 0,
     dateValue: currentdate,
     // tabbar
-    isShow: false,
     photoShow: false,
     fontShow: false,    
     
-    diaryTitle:'',//文本标题
     content:'',  //文本内容
     // 位置
     locationStyle: '',
@@ -27,9 +26,12 @@ Page({
     photos: [],
     phCount:0,
     newPhotos:[],
+    photoStr:'',
     // 文字样式
     fontSize: '',
     fontColor: '',
+    //上传
+    progress:0,
 
     sizes: [
       {index: 0,size: "12px",selected: false},
@@ -68,7 +70,6 @@ Page({
  */
   bindclick() {
     this.setData({
-      isShow: false,
       photoShow: false,
       fontShow: false
     })
@@ -96,13 +97,11 @@ Page({
           fontSize: event.target.dataset.fontsize
         })
         console.log(this.data);
-      },
+  },
   fontShowHide() {
     let that = this;
     that.setData({
-      isShow: false,
       photoShow: false,
-      recordShow: false,
       fontShow: !this.data.fontShow
     })
   },
@@ -120,7 +119,7 @@ Page({
           fontColor: event.target.dataset.color
         })
         console.log(this.data);
-      },
+ },
 
   addPhoto(){
     let that = this
@@ -154,7 +153,6 @@ Page({
               phCount
             })
         }
-       
       }
     })
   },
@@ -173,7 +171,6 @@ Page({
   photoShowHide() {
     let that = this;
     that.setData({
-      isShow: false,
       fontShow: false,
       photoShow: !this.data.photoShow
     })
@@ -184,6 +181,7 @@ Page({
     wx.getLocation({
       type: 'wgs84',
       success: (res) => {
+        console.log(res)
         var latitude = res.latitude;
         var longitude = res.longitude;
         demo.reverseGeocoder({
@@ -221,21 +219,33 @@ Page({
  */
 save() {
   let that = this;
-  // console.log(this.data.content);
-  let photos=that.data.photos;
+  this.fontShowHide();
+  let data=that.data;
+  let photos=data.photos;
+  let currentdate=data.dateValue;
+  let newPhotos=data.newPhotos;
+  let content=data.content;
+  let location=data.location;
+   
+  console.log(currentdate,formatTime,newPhotos,content,location)
+
   let len=photos.length;
-  let progress=0; 
-  if(!this.data.content){
+  // let progress=0; 
+  if(!this.data.content&&len==0){
     wx.showToast({
-      title: '文本不能为空哦',
+      title: '内容不能为空哦！',
       icon: 'none',
       duration: 2000
     });
     return;
   }
+
   if(len!=0){
-      this.upPic(len,photos);
+     this.upPic(len,photos);
   }
+
+
+
 
       //  wx.showToast({
       //     title: '文本不能为空哦',
@@ -259,22 +269,22 @@ save() {
         filePath: arr[i][0],
         name: 'mypic',
         header:{"Content-Type":"multipart/form-data"},//修改请求头
-        formData:{pid:12,pname:''},
+        formData:{a:12,b:''},
         success:function(res){
-        let json=JSON.parse(res.data);
+          let json=JSON.parse(res.data);  
+          // console.log(res)
           let url=json.url;
-        console.log(json.url)
-        let newPhotos=that.data.newPhotos;
-        // console.log(newPhotos)
-        newPhotos.push(url);  
-        that.setData({newPhotos,newPhotos})
+          let newPhotos=that.data.newPhotos;
+          newPhotos.push(url);  
+          var photoStr= newPhotos.join('&')
+          that.setData({newPhotos,newPhotos})
+       
+          that.setData({photoStr})
+          console.log('图片列表'+photoStr)
           //  if(i>=len){
           //    progress=50;
           //    return;
           //  }
-        
-          // var cons=Object.prototype.toString.call(newPhotos)
-          // console.log('新的：'+newPhotos)
         }
       })
     }
@@ -285,9 +295,8 @@ save() {
    */
   onLoad: function (options) {
     // console.log(options)
-    this.setData({
-    //  diaryTitle:options.title
-    })
+    // this.setData({
+    // })
   },
 
   /**
