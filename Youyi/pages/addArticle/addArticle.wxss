@@ -95,7 +95,21 @@
     background:#fff url(http://148.70.65.234:3003/dairy/location.png) left no-repeat;
     background-size: 20px 20px;
   }
-
+.isOpen{
+  position: absolute;
+  bottom: 70px;
+  right: 10px;
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+}
+.isOpen switch{
+  zoom: .6;
+}
 
  /* 底部tabbar  */
 .operate-box {

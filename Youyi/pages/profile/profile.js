@@ -56,6 +56,11 @@ Page({
     this.setData({
         highLightIndex: tabIndex
     })
+    if(tabIndex==0){
+      wx.navigateTo({
+        url:"/pages/article/article"
+      })
+    }
   },
 
 /** 
@@ -66,7 +71,14 @@ touchAdd() {
     url: "/pages/addArticle/addArticle"
   })
 },
-
+/**
+ * 跳转到我的日记
+ */
+toSpace(){
+   wx.navigateTo({
+     url: '/pages/article/article'
+   }) 
+},
   /**
    * 页面的初始数据
    */

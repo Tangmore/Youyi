@@ -2,7 +2,7 @@
 <view class="profileBox">
   <!-- 头像 -->
   <view class='avatar'>
-     <image src="{{avatarImg}}" lazy-load mode='aspectFill' class="avatarImg"></image>
+     <image src="{{avatarImg}}" lazy-load mode='aspectFill' class="avatarImg" bindtap='toSpace'></image>
     <view class="nickName">{{nickName}}</view>
   </view>
 
@@ -13,8 +13,10 @@
   <view class="tablist">
     <view wx:for="{{tabs}}" wx:key='index'  id="{{index}}" bindtap="touchTab"  class="tab" >
       <view class="content" >
-        <image class="image" mode="aspectFit" src="{{highLightIndex == index ? item.iconActive :  item.icon}}"></image>
-        <view style="margin-top:2px;color:{{highLightIndex == index ?'#54BFE2':''}}">{{item.title}}</view>
+        <image class="image" mode="aspectFit" 
+        src="{{highLightIndex == index ? item.iconActive :  item.icon}}"></image>
+        <view style="margin-top:2px;color:{{highLightIndex == index ?'#54BFE2':''}}">
+          {{item.title}}</view>
       </view>
     </view>
   </view>

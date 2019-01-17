@@ -1,17 +1,22 @@
 {
   "pages": [
-    "pages/addArticle/addArticle",
+    "pages/article/article",
     "pages/home/home",
+    "pages/addArticle/addArticle",
     "pages/authorize/authorize",
     "pages/addMessage/addMessage",
     "pages/profile/profile",
-    "pages/article/article",
     "pages/gallery/gallery",
     "pages/flowers/flowers",
     "pages/message/message",
     "pages/product/product",
     "pages/floDetail/floDetail"
   ],
+  "permission":{
+     "scope.userLocation":{
+       "desc":"小程序将获取你的地理信息"
+     }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fcc",

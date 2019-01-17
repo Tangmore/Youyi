@@ -1,68 +1,58 @@
-// pages/article/article.js
-const app = getApp()
+ var app=getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
+  data:{
+    isShow:true,
+    title:'',
+    time:'',
+    content:'',
+    images:[],
+    location:'',
+    diaryCount: 8,
+    imgCount:1,
+    highLightIndex:0
+   
+  },
+  touchTab(e){
     
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    
+  onLoad:function() {
+ 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
+  onShow:function() {
+    // let that = this;
+    // let images = wx.getStorageSync("images")
+    // let content = wx.getStorageSync("diaryContent")
+    // let diaryTitle = wx.getStorageSync("title")
+    // let time = wx.getStorageSync("date")
+    // let location = wx.getStorageSync("location")
+    // that.setData({
+    //   images:images
+    // })
+    // that.setData({
+    //   content:content
+    // })
+    // that.setData({
+    //   diaryTitle:diaryTitle
+    // })
+    // that.setData({
+    //   time:time
+    // })
+    // that.setData({
+    //   location:location
+    // })
+    // if(content){
+    //   that.setData({
+    //     diaryCount:1
+    //   })
+    // }
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    
+  modify: function(){
+    // console.log('aaa')
+    // wx.navigateTo({
+    //   url:"/pages/new/index?content="+this.data.content
+    // })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-    
+  deleteDiary:function() {
+ 
   }
 })
-

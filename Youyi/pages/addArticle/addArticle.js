@@ -27,12 +27,14 @@ Page({
     phCount:0,
     newPhotos:[],
     photoStr:'',
+    //上传进度
+    progress:0,
+    // 是否公开
+    isOpen:'公开',
+    isPrivacy:1,
     // 文字样式
     fontSize: '',
     fontColor: '',
-    //上传
-    progress:0,
-
     sizes: [
       {index: 0,size: "12px",selected: false},
       {index: 1,size: "14px",selected: false},
@@ -74,7 +76,24 @@ Page({
       fontShow: false
     })
   },
-  input: function (e) {
+  toZero(){
+    this.setData({
+      dateValue: currentdate,
+      locationStyle: '',
+      location: "点击添加位置",
+      content:'',
+      photos: [],
+      phCount:0,
+      newPhotos:[],
+      photoStr:'',
+      fontSize: '',
+      fontColor: '',
+      progress:0,
+      isOpen:'公开',
+      isPrivacy:1
+ }) 
+  },
+  input(e) {
       let that = this
       // console.log(e.detail.value)
       let content = e.detail.value
@@ -96,7 +115,7 @@ Page({
         this.setData({
           fontSize: event.target.dataset.fontsize
         })
-        console.log(this.data);
+        // console.log(this.data);
   },
   fontShowHide() {
     let that = this;
@@ -118,7 +137,7 @@ Page({
         this.setData({
           fontColor: event.target.dataset.color
         })
-        console.log(this.data);
+        // console.log(this.data);
  },
 
   addPhoto(){
@@ -213,81 +232,126 @@ Page({
       }
     })
   },
+  // 是否公开发表
+  switchChange(e){
+    var isopen=e.detail.value;
+    if(isopen){
+      this.setData({
+        isOpen:'公开'
+      })
+    }else{
+      this.setData({
+        isOpen:'私密',
+        isPrivacy:0
+      })
+    }
+  },
 
 /**
  * 保存/上传日记内容
  */
-save() {
+saveContent() {
   let that = this;
-  this.fontShowHide();
   let data=that.data;
-  let photos=data.photos;
   let currentdate=data.dateValue;
-  let newPhotos=data.newPhotos;
   let content=data.content;
-  let location=data.location;
-   
-  console.log(currentdate,formatTime,newPhotos,content,location)
-
-  let len=photos.length;
-  // let progress=0; 
-  if(!this.data.content&&len==0){
-    wx.showToast({
-      title: '内容不能为空哦！',
-      icon: 'none',
-      duration: 2000
-    });
-    return;
+  let isPrivacy=data.isPrivacy;
+  let fontColor=data.fontColor;
+  if(data.location=='点击添加位置'){that.setData({location:''})};
+  console.log(currentdate,formatTime,data.photoStr,content,data.location,fontColor)
+  var str=`currentdate=${currentdate};
+  &formatTime=${formatTime}&contentStr=${content}
+  &fontColor=${fontColor}&location=${data.location}`;
+  if(content){
+       wx.request({
+         url:app.globalData.baseUrl+'uploadCon',
+         data:{
+            openid:app.globalData.openid,
+            photoStr:that.data.photoStr,
+            contentStr:str,
+            isPrivacy:isPrivacy
+         },
+         method:'POST',
+         header:{
+           'Content-Type':'application/x-www-form-urlencoded'
+         },
+         success:function(res){
+          //  console.log(res)
+           if(res.data.code==1){
+            wx.showToast({
+              title:res.data.msg,
+              icon: 'none',
+              duration: 2000
+            })
+            that.toZero();
+           }
+           if(res.data.code==-1){
+            wx.showToast({
+              title:res.data.msg,
+              icon: 'none',
+              duration: 2000
+            })
+           }
+           setTimeout(()=>{
+             wx.switchTab({
+               url:'/pages/home/home'
+             })
+           },3000)
+         }
+       })
   }
-
-  if(len!=0){
-     this.upPic(len,photos);
-  }
-
-
-
-
-      //  wx.showToast({
-      //     title: '文本不能为空哦',
-      //     icon: 'none',
-      //     duration: 2000
-      //   });
-        //  setTimeout(function () {
-        //   wx.hideLoading();
-        //   wx.navigateBack();
-        // }, 2000)
- 
   },
   /**
    * 上传图片
    */
-  upPic(len,arr){
+save() {
+  this.bindclick();
     let that = this;
-    for(var i=0;i<len;i++){
-      wx.uploadFile({
-        url: app.globalData.baseUrl+'upload',
-        filePath: arr[i][0],
-        name: 'mypic',
-        header:{"Content-Type":"multipart/form-data"},//修改请求头
-        formData:{a:12,b:''},
-        success:function(res){
-          let json=JSON.parse(res.data);  
-          // console.log(res)
-          let url=json.url;
-          let newPhotos=that.data.newPhotos;
-          newPhotos.push(url);  
-          var photoStr= newPhotos.join('&')
-          that.setData({newPhotos,newPhotos})
-       
-          that.setData({photoStr})
-          console.log('图片列表'+photoStr)
-          //  if(i>=len){
-          //    progress=50;
-          //    return;
-          //  }
-        }
-      })
+    let photos=that.data.photos;
+    let phCount=that.data.phCount;
+    let progress=0;
+      // 图片和内容为空
+  if(!that.data.content&&phCount==0){
+    wx.showToast({
+      title: '内容不能为空哦！',
+      icon: 'none',
+      duration: 2000
+    })
+    return;
+  }
+  if(phCount!=0){
+      for(var i=0;i<phCount;i++){
+        wx.uploadFile({
+          url: app.globalData.baseUrl+'upload',
+          filePath: photos[i][0],
+          name: 'mypic',
+          header:{"Content-Type":"multipart/form-data"},//修改请求头
+          formData:{a:12,b:''},
+          success:function(res){
+            let json=JSON.parse(res.data);  
+            // console.log(res)
+            let url=json.url;
+            let newPhotos=that.data.newPhotos;
+            newPhotos.push(url);  
+            that.setData({newPhotos})
+            
+            var photoStr= newPhotos.join('&')
+            that.setData({photoStr})
+            // console.log('图片列表'+photoStr)
+            progress+=10;
+            // 保存内容
+            if(progress==10*phCount){
+              that.saveContent();
+            }
+          }
+        })
+      }
+  }else{
+    let content=that.data.content;
+    if(content){
+       that.saveContent();
     }
+  }
   },
 
   /**
@@ -317,7 +381,7 @@ save() {
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+ 
   },
 
   /**

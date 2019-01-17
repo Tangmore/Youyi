@@ -1,1 +1,77 @@
 <!--pages/article/article.wxml-->
+<!-- <view class="container">
+  <view class="header flex">
+    <view class="iconBox"></view>
+    <view class="text flex_auto" >{{diaryCount}}篇记录</view>
+    <view class="refresh"></view>
+  </view>
+  <view class="diaryBox" >
+    <view wx:if="{{isShow}}">
+      <view class="time">{{time}}</view>
+      <view class="content">{{content}}</view>
+      <view class="imgBox">
+        <view class="image" wx:for="{{images}}" wx:key="item">
+          <image src="{{item}}"></image>
+        </view>
+      </view>
+      <view class="location">{{location}}</view>
+    </view>
+    <view wx:if="{{diaryCount <= 0}}"class="inform">      
+      <image src="../../images/diary_bg.png"></image>
+      <text class="info">还没有记录哦~</text>
+    </view>
+   <view wx:if="{{diaryCount > 0}}" class="operate flex">
+      <view class="blank flex_auto"></view>
+      <view class="delete" title="删除" bindtap="deleteDiary"></view>
+      <view class="modify" title="编辑" bindtap="modify"></view>
+  </view>
+  </view>
+</view> -->
+
+
+<view class="myDiaryBox">
+    <!-- tab切换 -->
+    <view class="header">
+        <view class="isopen {{highLightIndex == 0 ?'active':''}}" >公开</view>
+        <view class="isopen {{highLightIndex == 1 ?'active':''}}">私密</view>
+    </view>
+   <!-- 消息盒子 -->
+    <view class="diaryBox">
+        <view wx:if="{{diaryCount > 0}}">
+            <view wx:if="{{isShow}}" class="diaryContentBox">
+                <view class="first_row">
+                    <image src="http://148.70.65.234:3003/img/gallery/5.jpg"></image>
+                    <view class="info"> 
+                        <view style="font-size: 16px">Forevermore</view> 
+                        <view class="time">2018-09-29<text style="margin-left:8px">22:23</text></view>
+                    </view>
+                </view>
+                
+                <view class="second_row">
+                    <view class="content">灌灌灌灌灌过过过过过过过过过过过过过</view>
+                    <view class="imgBox">
+                        <!-- <view class="image" wx:for="{{images}}" wx:key="item">
+                        <image src="{{item}}"></image>
+                        </view> -->
+                        <image wx:if="{{imgCount==1}}" src="http://148.70.65.234:3003/img/gallery/8.gif" mode='widthFix' class="onlyOne"></image>
+                        <image wx:if="{{imgCount>1}}" src="http://148.70.65.234:3003/img/gallery/5.jpg" mode='widthFix' class="notOne"></image> 
+                    </view>
+                </view>
+                <view class="third_row">  
+                    <view class="view">31次观看</view>
+                    <view class="operate">  
+                        <view class="upvote" title="点赞"   bindtap="deleteDiary"></view>
+                        <view class="reply" title="评论" bindtap="modify"></view>
+                        <view class="share" title="分享" bindtap="share"></view>
+                    </view>
+                </view>  
+                 <view class="location">重庆重庆市</view>
+            </view>
+        </view>
+
+        <view wx:if="{{diaryCount <= 0}}" class="unwritten">
+            <image src="http://148.70.65.234:3003/dairy/diary_bg.png"></image>
+            <text class="info">还没有记录哦~</text>
+        </view>
+    </view>
+</view>

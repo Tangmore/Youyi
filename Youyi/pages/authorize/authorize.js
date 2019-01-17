@@ -25,11 +25,28 @@ Page({
   },
   bindGetUserInfo: function(e) {
     if (e.detail.userInfo){
+      wx.request({
+          url:app.globalData.baseUrl+'login',
+          data:{
+            openid:app.globalData.openid,
+            nickname:e.detail.userInfo.nickName,
+            avatar:e.detail.userInfo.avatarUrl
+          },
+          method:'POST',
+          header:{
+            'Content-Type':'application/x-www-form-urlencoded'
+          },
+          success:function(res){
+            console.log(res)
+          }
+      })
       // 用户按了允许授权按钮   
-      console.log(e.detail.userInfo)
+       console.log(e.detail.userInfo)
           wx.switchTab({
-          url: '/pages/home/home'
-       });
-    } 
+            url: '/pages/home/home'
+          });
+
+
+    }
   }
 })

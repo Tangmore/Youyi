@@ -32,6 +32,10 @@
   <view class="location" style="{{locationStyle}}" 
  bindtap="getLocation">{{location}}</view>
 
+<!-- 是否公开发表 -->
+<view class="isOpen">
+ <switch checked bindchange='switchChange'/> <text>{{isOpen}}</text>
+</view>
  <!-- 底部tabbar -->
   <view class="operate-box">
     <view class="operation-list flex">
