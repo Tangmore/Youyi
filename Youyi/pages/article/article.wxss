@@ -1,4 +1,7 @@
 /* pages/article/article.wxss */
+.myDiaryBox{
+  position: relative;
+}
 /* tab */
 .header {
     position: fixed;
@@ -78,20 +81,17 @@
   }
   .diaryBox .second_row .imgBox {
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
   }
-  .diaryBox .second_row .notOne{
-      width: 33.3%;
-      box-sizing: border-box;  
-      display: inline-block;
+  .diaryBox .second_row image{
+    margin-right:2px;
   }
-  .diaryBox .second_row .onlyOne{
-    width: 100%;
-    height: 70%;
-    box-sizing: border-box;  
-}
+  .diaryBox .second_row image.notOne{
+    width: 32%;
+    float: left;
+    margin-right:2px;
+  }
+
+
 .diaryBox .third_row{
      width: 100%;
      display: flex;
@@ -145,3 +145,37 @@
     background: url(http://148.70.65.234:3003/dairy/blue.png) no-repeat;
     background-size: 20px 20px;
   }
+
+/* 底部评论盒子 */
+.commentBox {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 99;
+  padding: 6px;
+}
+.commentBox  .bottomBar{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.bottomBar .inputBox{
+  width: 82%;
+  border: 1px solid #efefef;
+  height: 34px;
+  border-radius: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+  line-height: 34px;
+  font-size: 16px;
+}
+.bottomBar .right {
+  width: 26px;
+  height: 26px;
+  margin-right: 20px;
+}
+

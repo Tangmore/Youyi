@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/article/article",
     "pages/home/home",
     "pages/addArticle/addArticle",
+    "pages/article/article",
     "pages/authorize/authorize",
     "pages/addMessage/addMessage",
     "pages/profile/profile",
@@ -12,10 +12,10 @@
     "pages/product/product",
     "pages/floDetail/floDetail"
   ],
-  "permission":{
-     "scope.userLocation":{
-       "desc":"小程序将获取你的地理信息"
-     }
+  "permission": {
+    "scope.userLocation": {
+      "desc": "小程序将获取你的地理信息"
+    }
   },
   "window": {
     "backgroundTextStyle": "light",
@@ -24,6 +24,7 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
+    "selectedColor": "q#FF75AB",
     "list": [
       {
         "pagePath": "pages/home/home",
@@ -49,7 +50,6 @@
         "iconPath": "pages/static/tabbar/message.png",
         "selectedIconPath": "pages/static/tabbar/message-active.png"
       },
-     
       {
         "pagePath": "pages/profile/profile",
         "text": "我的",

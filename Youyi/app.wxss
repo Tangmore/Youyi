@@ -33,3 +33,36 @@
   border-right: 3rpx solid #ccc;
   transform: rotate(45deg);  /*旋转45*/
 }
+
+/*底部动画*/
+.emoji-move-in {
+  -webkit-animation: emoji-move-in 0.3s forwards;
+  animation: emoji-move-in 0.3s forwards;
+}
+
+.emoji-move-out {
+  -webkit-animation: emoji-move-out 0.3s forwards;
+  animation: emoji-move-out 0.3s forwards;
+}
+
+.no-emoji-move {
+  -webkit-animation: none;
+  animation: none;
+}
+
+@keyframes emoji-move-in {
+  0% {
+    margin-bottom: -200px;
+  }
+  100% {
+    margin-bottom: 0;
+  }
+}
+@keyframes emoji-move-out {
+  0% {
+    margin-bottom: 0;
+  }
+  100% {
+    margin-bottom: -200px;
+  }
+}

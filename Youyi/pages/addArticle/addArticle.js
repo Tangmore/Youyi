@@ -96,9 +96,9 @@ Page({
   input(e) {
       let that = this
       // console.log(e.detail.value)
-      let content = e.detail.value
+      let content = e.detail.value.trim();
       that.setData({
-        content: e.detail.value
+        content
       })
   },
   changeFont(event) {
@@ -154,9 +154,7 @@ Page({
         // console.log(tempFilePaths)
         var photos=that.data.photos;
         let phCount=photos.length;
-        this.setData({phCount});
 
-        // console.log(len)
         if (phCount==9){
             wx.showToast({
               title: '最多可添加9张图片...',
@@ -164,14 +162,13 @@ Page({
               duration: 1000
             })
             return;
-        }else{
-            photos.push(tempFilePaths);
-            phCount++;
-            that.setData({
+        }
+          phCount=phCount+tempFilePaths.length;
+          photos=photos.concat(tempFilePaths);
+          that.setData({
               photos,
               phCount
-            })
-        }
+          })
       }
     })
   },
@@ -182,7 +179,7 @@ Page({
     let phCount=that.data.phCount-1;
     that.data.photos.splice(id, 1);
     that.setData({
-      phCount,
+      phCount:phCount,
       photos: that.data.photos
     })
   },
@@ -213,13 +210,9 @@ Page({
             var location = res.result.address_component.province 
             + res.result.address_component.city
             that.setData({
-              location,   
+              location:location,   
               locationStyle: 
               'background-image:url(http://148.70.65.234:3003/dairy/blue.png); color:#1296db;'
-            });
-            wx.setStorage({
-              key: "location",
-              data: location
             })
           },
           fail(res) {
@@ -255,21 +248,23 @@ saveContent() {
   let data=that.data;
   let currentdate=data.dateValue;
   let content=data.content;
+  let phCount=that.data.phCount;
   let isPrivacy=data.isPrivacy;
   let fontColor=data.fontColor;
-  if(data.location=='点击添加位置'){that.setData({location:''})};
-  console.log(currentdate,formatTime,data.photoStr,content,data.location,fontColor)
-  var str=`currentdate=${currentdate};
-  &formatTime=${formatTime}&contentStr=${content}
-  &fontColor=${fontColor}&location=${data.location}`;
-  if(content){
+  let location=data.location;
+  console.log(currentdate,formatTime,data.photoStr,content,location,fontColor);
+  if( content || phCount!=0){
        wx.request({
          url:app.globalData.baseUrl+'uploadCon',
          data:{
             openid:app.globalData.openid,
             photoStr:that.data.photoStr,
-            contentStr:str,
-            isPrivacy:isPrivacy
+            contentStr:content,
+            isPrivacy:isPrivacy,
+            currentdate:currentdate,
+            formatTime:formatTime,
+            fontColor:fontColor,
+            nowLocation:location
          },
          method:'POST',
          header:{
@@ -296,7 +291,7 @@ saveContent() {
              wx.switchTab({
                url:'/pages/home/home'
              })
-           },3000)
+           },1000)
          }
        })
   }
@@ -323,10 +318,10 @@ save() {
       for(var i=0;i<phCount;i++){
         wx.uploadFile({
           url: app.globalData.baseUrl+'upload',
-          filePath: photos[i][0],
+          filePath: photos[i],
           name: 'mypic',
           header:{"Content-Type":"multipart/form-data"},//修改请求头
-          formData:{a:12,b:''},
+          formData:{},
           success:function(res){
             let json=JSON.parse(res.data);  
             // console.log(res)
@@ -341,6 +336,15 @@ save() {
             progress+=10;
             // 保存内容
             if(progress==10*phCount){
+              // that.setData({
+              //   photos: []
+              // })
+              setTimeout(()=>{
+                wx.switchTab({
+                  url:'/pages/home/home'
+                })
+              },1000)
+              
               that.saveContent();
             }
           }
@@ -352,6 +356,7 @@ save() {
        that.saveContent();
     }
   }
+  // that.toZero();
   },
 
   /**

@@ -1,77 +1,57 @@
 <!--pages/article/article.wxml-->
-<!-- <view class="container">
-  <view class="header flex">
-    <view class="iconBox"></view>
-    <view class="text flex_auto" >{{diaryCount}}篇记录</view>
-    <view class="refresh"></view>
-  </view>
-  <view class="diaryBox" >
-    <view wx:if="{{isShow}}">
-      <view class="time">{{time}}</view>
-      <view class="content">{{content}}</view>
-      <view class="imgBox">
-        <view class="image" wx:for="{{images}}" wx:key="item">
-          <image src="{{item}}"></image>
-        </view>
-      </view>
-      <view class="location">{{location}}</view>
-    </view>
-    <view wx:if="{{diaryCount <= 0}}"class="inform">      
-      <image src="../../images/diary_bg.png"></image>
-      <text class="info">还没有记录哦~</text>
-    </view>
-   <view wx:if="{{diaryCount > 0}}" class="operate flex">
-      <view class="blank flex_auto"></view>
-      <view class="delete" title="删除" bindtap="deleteDiary"></view>
-      <view class="modify" title="编辑" bindtap="modify"></view>
-  </view>
-  </view>
-</view> -->
-
-
 <view class="myDiaryBox">
     <!-- tab切换 -->
     <view class="header">
-        <view class="isopen {{highLightIndex == 0 ?'active':''}}" >公开</view>
-        <view class="isopen {{highLightIndex == 1 ?'active':''}}">私密</view>
+        <view class="isopen {{highLightIndex == 1 ?'active':''}}" bindtap='toOpen'>公开</view>
+        <view class="isopen {{highLightIndex == 0 ?'active':''}}" bindtap='toPrivcy'>私密</view>
     </view>
-   <!-- 消息盒子 -->
-    <view class="diaryBox">
+    <!-- 消息盒子 -->
+    <view class="diaryBox" wx:for='{{contentList}}' wx:key='index' id="index">
         <view wx:if="{{diaryCount > 0}}">
-            <view wx:if="{{isShow}}" class="diaryContentBox">
+            <view  wx:if="{{isShow}}" class="diaryContentBox">
                 <view class="first_row">
-                    <image src="http://148.70.65.234:3003/img/gallery/5.jpg"></image>
-                    <view class="info"> 
-                        <view style="font-size: 16px">Forevermore</view> 
-                        <view class="time">2018-09-29<text style="margin-left:8px">22:23</text></view>
+                        <image src="{{avatar}}"></image>
+                    <view class="info">
+                        <view style="font-size: 16px">{{nickname}}</view>
+                        <view class="time">{{item.currentdate}}<text style="margin-left:8px">{{item.formatTime}}</text></view>
                     </view>
                 </view>
-                
                 <view class="second_row">
-                    <view class="content">灌灌灌灌灌过过过过过过过过过过过过过</view>
-                    <view class="imgBox">
-                        <!-- <view class="image" wx:for="{{images}}" wx:key="item">
-                        <image src="{{item}}"></image>
-                        </view> -->
-                        <image wx:if="{{imgCount==1}}" src="http://148.70.65.234:3003/img/gallery/8.gif" mode='widthFix' class="onlyOne"></image>
-                        <image wx:if="{{imgCount>1}}" src="http://148.70.65.234:3003/img/gallery/5.jpg" mode='widthFix' class="notOne"></image> 
+                    <view class="content" style="color: {{item.fontColor}}">{{item.contentStr}}</view>
+
+                    <view class="imgBox" wx:for='{{item.diaryImg}}' wx:for-item='imgItem' wx:key='index' >
+                        <image bindtap='imgPreview'
+                         class="{{item.diaryImg.length>1?'notOne':''}}"
+                         src="{{imgItem}}" mode="aspectFill" data-list="{{item.diaryImg}}" data-src="{{imgItem}}"
+                         ></image>
                     </view>
                 </view>
-                <view class="third_row">  
-                    <view class="view">31次观看</view>
-                    <view class="operate">  
-                        <view class="upvote" title="点赞"   bindtap="deleteDiary"></view>
-                        <view class="reply" title="评论" bindtap="modify"></view>
+                <view class="third_row">
+                    <view class="view"><text>31</text>次浏览</view>
+                    <view class="operate">
+                        <view class="upvote" title="点赞" bindtap="deleteDiary"></view>
+                        <view class="reply" title="评论" bindtap="comment"></view>
                         <view class="share" title="分享" bindtap="share"></view>
                     </view>
-                </view>  
-                 <view class="location">重庆重庆市</view>
+                </view>
+                <view class="location"  wx:if='{{item.location!==null}}'>{{item.location}}</view>
             </view>
         </view>
 
         <view wx:if="{{diaryCount <= 0}}" class="unwritten">
             <image src="http://148.70.65.234:3003/dairy/diary_bg.png"></image>
             <text class="info">还没有记录哦~</text>
+        </view>
+    </view>
+
+    <!-- 底部评论盒子 -->
+    <view class="commentBox {{commentBoxShow ? 'emoji-move-in' : 'emoji-move-out'}}">
+        <view class="bottomBar flex">
+            <input  type="text" bindinput="commentInput" bindblur='inputBlur'
+                 value="{{comment}}" placeholder="请输入评论内容"
+                  class="inputBox"/>
+            <image src='http://148.70.65.234:3003/dairy/send.png' 
+            class="right" bindtap="submitComment"></image>
         </view>
     </view>
 </view>
