@@ -107,14 +107,6 @@
     
   <!-- 添加图片盒子 -->
     <view class="photo-box {{photoShow ? 'emoji-move-in' : 'emoji-move-out'}}">
-      <!-- <scroll-view scroll-x="true">
-        <block wx:for="{{photos}}"  wx:key="item">
-          <view class="photo-cell" >
-            <view class="delete" id="{{index}}" bindtap="deletePhoto"></view>
-            <image bindtap="photoChoose" src="{{item}}"></image>
-          </view>
-        </block>
-      </scroll-view> -->
       <view class="addButton" bindtap="addPhoto"></view>
       <text class="desc">添加图片</text>
     </view>

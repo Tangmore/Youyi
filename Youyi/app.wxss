@@ -16,7 +16,7 @@
   font-size: 16px;
 }
 .cell-item{
-   padding: 20rpx 30rpx;
+   padding: 16rpx 20rpx;
    border-bottom: 1rpx solid #ddd;
 }
 /* 通用箭头 */
@@ -66,3 +66,116 @@
     margin-bottom: -200px;
   }
 }
+
+/*动态列表 */
+.diaryBox {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #fefefe;
+  position: relative;
+}
+/*动态列表 没有记录 */
+.diaryBox .unwritten {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  background-color: #faf9f9;
+}
+.diaryBox image{
+  width: 100%;
+} 
+.diaryBox .unwritten  .info {
+  font-size: 14px;
+  text-align: center;
+}
+
+/* 动态列表有记录时 */ 
+.diaryBox .diaryContentBox{
+ height: auto ;
+}
+.diaryBox .first_row{
+    display: flex;
+    flex-direction: row;
+}
+.diaryBox .first_row image{
+    width: 40px;
+    height:40px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+.diaryBox .first_row .time {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 10px;
+}
+.diaryBox .second_row{
+  margin-bottom: 20px;
+}
+.diaryBox .second_row .content {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.diaryBox .second_row .imgBox {
+  width: 100%;
+}
+.diaryBox .second_row image{
+  float: left;
+  margin-right:2px;
+  margin-bottom:8px;
+}
+.diaryBox .second_row image.notOne{
+  width: 32%;
+  height: 110px;
+}
+
+.diaryBox .third_row{
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+}
+.diaryBox  .third_row .view{
+      font-size: 14px;
+      width: 100%;
+      line-height: 30px;
+  }
+.diaryBox .third_row .operate {
+  width: 30%;
+  height: 22%;
+  display: flex;
+  flex-direction: row;
+}
+
+.diaryBox .operate .upvote {
+  width: 20px;
+  height: 20px;
+  background: url(http://148.70.65.234:3003/dairy/upvote.png) no-repeat;
+  background-size: cover;
+  margin-right: 10px;
+}
+.diaryBox .operate .reply{
+  width: 20px;
+  height: 20px;
+  background: url(http://148.70.65.234:3003/dairy/reply.png) no-repeat;
+  background-size: cover;
+  margin-right: 10px;
+}
+.diaryBox .operate .share{
+  width: 20px;
+  height: 20px;
+  background: url(http://148.70.65.234:3003/dairy/share.png) no-repeat;
+  background-size: cover;
+}
+
+.diaryBox .location {
+  padding-left: 20px;
+  box-sizing: border-box;
+  color: rgb(82, 183, 233);
+  font-size: 14px;
+  background: url(http://148.70.65.234:3003/dairy/blue.png) no-repeat;
+  background-size: 20px 20px;
+}
+

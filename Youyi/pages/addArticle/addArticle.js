@@ -12,7 +12,6 @@ Page({
  */
   data: {
     // 日期
-    picker1Value: 0,
     dateValue: currentdate,
     // tabbar
     photoShow: false,
@@ -59,10 +58,6 @@ Page({
   * 日历
 */
   bindDateChange(event) {
-    wx.setStorage({
-      key: "date",
-      data: event.detail.value
-    })
     this.setData({
       dateValue: event.detail.value
     })
@@ -336,9 +331,6 @@ save() {
             progress+=10;
             // 保存内容
             if(progress==10*phCount){
-              // that.setData({
-              //   photos: []
-              // })
               setTimeout(()=>{
                 wx.switchTab({
                   url:'/pages/home/home'

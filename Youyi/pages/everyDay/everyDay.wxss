@@ -1,0 +1,37 @@
+/* pages/everyDay/everyDay.wxss */
+/* 日期选择 */
+.calendar .date{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 80px;
+    height: 34px;
+    line-height: 34px;
+    border: 1px solid #736AA7;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #666;
+    background: #fff;
+    opacity: .8;
+    text-align: center;
+  }
+  .contentBox .title{
+      padding: 16px;
+      font-size: 26px;
+      color: #3E4D64;
+  }
+  .contentBox .author{
+      padding-left: 16px;
+      font-size: 14px;
+      margin-right: 14px;
+  }
+  .contentBox .words{
+      text-align: center;
+      margin-left:8px;
+      margin-bottom: 4px;
+  }
+  .contentBox .content{
+      font-size: 16px;
+      padding: 4px;
+      color:#3E4D64;
+  }

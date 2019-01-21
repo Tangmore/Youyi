@@ -1,10 +1,6 @@
 //app.js
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
     // 登录
     wx.login({
       success: res => {
@@ -30,7 +26,43 @@ App({
           })
       }
     })
-   
+  },
+  onShareAppMessage: function (options){
+    var shareObj={
+        title:'动态',
+        path:'/pages/article/article',
+        imageUrl:app.globalData.baseUrl+"img/gallery/101.jpg",
+        success:(res)=>{
+          if(res.errMsg=="shareAppMessage:ok"){
+            wx.showToast({
+              title:'转发成功',
+              icon: 'none',
+              duration: 1000
+            })
+          }
+        },
+        fail:()=>{
+           if(res.errMsg=="shareAppMessage:fail cancel"){
+            wx.showToast({
+              title:'取消转发',
+              icon: 'none',
+              duration: 1000
+            })
+           }else if(res.errMsg=="shareAppMessage:fail"){
+            wx.showToast({
+              title:'转发失败',
+              icon: 'none',
+              duration: 1000
+            })
+           }
+        }
+   }
+   if(options.from=='button'){
+     var id=options.target.dataset.id;
+     console.log(id)
+     shareObj.path='/pages/articleDetail/articleDetail?id='+id
+   }
+    return shareObj;
   },
   globalData: {
     userInfo: null,

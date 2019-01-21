@@ -1,16 +1,19 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/everyDay/everyDay",
     "pages/addArticle/addArticle",
     "pages/article/article",
     "pages/authorize/authorize",
-    "pages/addMessage/addMessage",
+    "pages/daily/daily",
     "pages/profile/profile",
     "pages/gallery/gallery",
     "pages/flowers/flowers",
     "pages/message/message",
     "pages/product/product",
-    "pages/floDetail/floDetail"
+    "pages/floDetail/floDetail",
+    "pages/articleDetail/articleDetail"
+
   ],
   "permission": {
     "scope.userLocation": {
@@ -19,12 +22,12 @@
   },
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fcc",
+    "navigationBarBackgroundColor": "#3E4D64",
     "navigationBarTitleText": "有意",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "selectedColor": "q#FF75AB",
+    "selectedColor": "#3E4D64",
     "list": [
       {
         "pagePath": "pages/home/home",
@@ -33,7 +36,7 @@
         "selectedIconPath": "pages/static/tabbar/home-active.png"
       },
       {
-        "pagePath": "pages/message/message",
+        "pagePath": "pages/daily/daily",
         "text": "动态",
         "iconPath": "pages/static/tabbar/collect.png",
         "selectedIconPath": "pages/static/tabbar/collect-active.png"
