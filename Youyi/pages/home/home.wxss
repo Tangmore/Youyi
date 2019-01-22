@@ -1,17 +1,21 @@
 /**index.wxss**/
-/**功能一:轮播图**/
+.index-container{
+   color: #3E4D64;
+}
+/*轮播图**/
 .slider,.slider swiper,.slider image{
   height:420rpx;
   width:100%;
 }
-/**功能二:九宫格**/
+/*九宫格**/
 .index-nav{
    display: flex;
    flex-wrap: wrap;
+   padding: 8px;
 }
 .nav-item{
    width:33.33333%;
-   height:140rpx;
+   height:130rpx;
    box-sizing: border-box;
    display: flex;
    flex-direction: column;
@@ -23,10 +27,40 @@
    width:102rpx;
    height:102rpx;
 }
-/**功能三:分隔块**/
+/*分隔块**/
 .divider{
-  height:30rpx;
+  height:20rpx;
   background-color:#f1f1f1; 
 }
+.contentBox{
+   padding:0 14px 0 14px;
+   font-size: 16px;
+}
+/* 一言一文 */
+.contentBox .everyTitle{
+   font-size: 12px;
+   margin-bottom: 4px;   
+   text-align: center;
+}
+ .originalTitle{
+   font-size: 12px;
+   padding: 10px;
+   text-align: right;
+}
+.box{
+   margin-bottom: 20px;
+}
+.contentBox .everyStory .content{
+   white-space: wrap; 
+   overflow: hidden;
+   text-overflow: ellipsis;  
+   height: auto;
+}
+.liltext{
+   margin:8px 0;
+   font-size: 12px;
+}
+
+
 
 

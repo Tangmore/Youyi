@@ -1,0 +1,16 @@
+/* pages/everyMusic/everyMusic.wxss */
+.contentBox .title{
+    padding: 16px;
+    font-size: 26px;
+    color: #3E4D64;
+}
+.contentBox .author{
+    padding-left: 16px;
+    font-size: 14px;
+    margin-right: 14px;
+}
+.contentBox .content{
+    font-size: 16px;
+    padding: 4px;
+    color:#3E4D64;
+}

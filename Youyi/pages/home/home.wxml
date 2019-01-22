@@ -2,11 +2,11 @@
 <view class="index-container">
    <!--轮播图-->
    <view class="slider">
-     <swiper autoplay>
-       <swiper-item wx:for="{{list}}" wx:key="index">
-          <image src="{{item.img_url}}" lazy-load mode="aspectFill"></image>
-       </swiper-item>
-     </swiper>
+      <swiper autoplay>
+         <swiper-item wx:for="{{list}}" wx:key="index">
+            <image src="{{item.img_url}}" lazy-load mode="aspectFill"></image>
+         </swiper-item>
+      </swiper>
    </view>
    <!--九宫格-->
    <view class="index-nav">
@@ -15,9 +15,46 @@
          <text>{{item.title}}</text>
       </view>
    </view>
+   <view class="divider"></view>
+   <view class="contentBox">
+      <!-- 一文 -->
+      <view class="everyStory box" bindtap='jumpEveryStory'>
+         <view class="originalTitle">面朝大海,春暖花开</view>
+         <view class="everyTitle">-STORY-</view>
+         <view wx:for='{{contentObj}}' wx:key="index" class="content">
+            <view style="font-size: 18px;">{{item.title}}</view>
+            <view class="liltext">{{item.author}}</view>
+            <text>{{item.digest}}</text>
+         </view>
+      </view>
+      <view class="divider"></view>
+      <!-- 一言 -->
+      <view class="everyLang box">
+         <view class="originalTitle">走过时光,漫步记忆</view>
+         <view class="everyTitle">-SOUl-</view>
+         <view wx:for='{{everyLangList}}' wx:key="index">
+            <image src="{{item.picture2}}" bindtap='soulPreView' mode="widthFix" style="width:100%" data-src="{{item.picture2}}"></image>
+            <view>{{item.content}}</view>
+            <view>{{item.note}}</view>
+         </view>
+      </view>
+      <view class="divider"></view>
 
-   <view>
+      <!-- 音乐 -->
+      <view class="everyLang box">
+         <view class="originalTitle">微笑向暖,安之若素</view>
+         <view class="everyTitle">-MUSIC-</view>
+         <view wx:for='{{musicList}}' wx:key="index">
+            <view bindtap='jumpEveryMusic' id="{{item.id}}">
+               <view style="font-size: 18px;">{{item["text-title"]}}</view>
+               <view class="liltext">{{item["text-author"]}}</view>
+               <image src="{{item['item-picture-img']}}" bindtap='soulPreView' style="width:100%;" mode="widthFix"
+                  data-src="{{item['item-picture-img']}}"></image>
+               <view class="liltext">{{item["text-content-short"]}}</view>
+               <view class="liltext" class="originalTitle ">{{item["text-music-author"]}}</view>
+            </view>
+         </view>
+      </view>
+      <view class="divider"></view>
    </view>
-
-  </view>
-  
+</view>

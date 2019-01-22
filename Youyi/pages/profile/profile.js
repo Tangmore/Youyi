@@ -7,7 +7,7 @@ var tabs = [
   {
     "icon": iconPath + "mark.png",
     "iconActive": iconPath + "markHL.png",
-    "title": "日记"
+    "title": "动态"
   },
   {
     "icon": iconPath + "collect.png",

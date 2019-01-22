@@ -1,19 +1,22 @@
 {
   "pages": [
-    "pages/home/home",
-    "pages/everyDay/everyDay",
+        "pages/profile/profile",
+      "pages/home/home",
+      "pages/everyMusic/everyMusic",
+  
+    "pages/everyStory/everyStory",
     "pages/addArticle/addArticle",
     "pages/article/article",
     "pages/authorize/authorize",
     "pages/daily/daily",
-    "pages/profile/profile",
+
     "pages/gallery/gallery",
     "pages/flowers/flowers",
     "pages/message/message",
     "pages/product/product",
     "pages/floDetail/floDetail",
     "pages/articleDetail/articleDetail"
-
+  
   ],
   "permission": {
     "scope.userLocation": {
@@ -22,20 +25,12 @@
   },
   "window": {
     "backgroundTextStyle": "light",
-<<<<<<< HEAD
-    "navigationBarBackgroundColor": "#736AA7",
-=======
     "navigationBarBackgroundColor": "#3E4D64",
->>>>>>> d3606daa590411c65a0158fca0fedfde09273c94
     "navigationBarTitleText": "有意",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-<<<<<<< HEAD
-    "selectedColor": "#FF75AB",
-=======
     "selectedColor": "#3E4D64",
->>>>>>> d3606daa590411c65a0158fca0fedfde09273c94
     "list": [
       {
         "pagePath": "pages/home/home",
