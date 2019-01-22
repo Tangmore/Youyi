@@ -1,18 +1,13 @@
-<!--pages/article/article.wxml-->
+<!--pages/daily/daily.wxml-->
 <view class="myDiaryBox">
-    <!-- tab切换 -->
-    <view class="header">
-        <view class="isopen {{highLightIndex == 1 ?'active':''}}" bindtap='toOpen'>公开</view>
-        <view class="isopen {{highLightIndex == 0 ?'active':''}}" bindtap='toPrivcy'>私密</view>
-    </view>
     <!-- 消息盒子 -->
     <view class="diaryBox" wx:for='{{contentList}}' wx:key='index'>
         <view wx:if="{{diaryCount > 0}}">
             <view  class="diaryContentBox" bindtap="comment" id="{{item.id}}">
                 <view class="first_row">
-                    <image src="{{avatar}}"></image>
+                    <image src="{{item.avatar}}"></image>
                     <view class="info">
-                        <view style="font-size: 16px">{{nickname}}</view>
+                        <view style="font-size: 16px">{{item.nickname}}</view>
                         <view class="time">{{item.currentdate}}
                             <text style="margin-left:8px">{{item.formatTime}}</text>
                         </view>
@@ -32,7 +27,7 @@
                     <view class="operate">
                         <view class="upvote" title="点赞" bindtap="deleteDiary" data-id="{{item.id}}"></view>
                         <view class="reply" title="评论" ></view>
-                      <button open-type="share" plain='true' style="border:0;padding: 0" data-id="{{item.id}}">  <view title="分享" class="share"></view></button>
+                        <button open-type="share" plain='true' style="border:0;padding: 0" data-id="{{item.id}}">  <view title="分享" class="share"></view></button>
                     </view>
                 </view>
                 <view class="location" wx:if='{{item.location!==null}}'>{{item.location}}</view>

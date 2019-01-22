@@ -1,4 +1,5 @@
- var app=getApp()
+// pages/daily/daily.js
+var app=getApp()
 Page({
   data:{
     content:'',
@@ -6,14 +7,9 @@ Page({
     diaryCount: -2,
     // 分页
     contentList:[],
-    pageIndex:1,
+    pageIndex:0,
     pageSize:5,
     pageCount:0,
-    // tab切换
-    highLightIndex:1,
-    // 用户信息
-    avatar:'',
-    nickname:'',
   },
   toGetDiaryList(){
     var pno=this.data.pageIndex+1;
@@ -21,14 +17,11 @@ Page({
     wx.request({
       url:app.globalData.baseUrl+ 'getDiaryList',
       data:{
-        isPrivacy:this.data.highLightIndex,
-        openid:app.globalData.openid,
         pno:pno,
         pageSize:ps
       },
       success:(res)=> {
           console.log(res)
-          // let obj=res.data.data;
           if(!res.data.data){
               this.setData({diaryCount:0})
               return;
@@ -62,32 +55,6 @@ Page({
         urls:list
     })
   },
-  /**
-   * 获取公开信息
-   */
-  toOpen(){
-    this.setData({
-      diaryCount:0,
-      highLightIndex:1,
-      contentList:[],
-      pageIndex:1,
-      pageCount:0
-    })
-    this.toGetDiaryList();
-  },
-  /**
-   * 获取私密信息
-   */
-  toPrivcy(){
-    this.setData({
-      diaryCount:0,
-      highLightIndex:0,
-      contentList:[],
-      pageIndex:1,
-      pageCount:0
-    })
-    this.toGetDiaryList();
-  },
 /**
  * 跳转detail详情页
  * 
@@ -100,13 +67,7 @@ comment(e){
     }) 
 },
 
-  onLoad:function() {
-    if(app.globalData.userInfo){
-      this.setData({
-        avatar:app.globalData.userInfo.avatarUrl,
-        nickname:app.globalData.userInfo.nickName
-      })
-    }
+  onLoad:function() {   
     this.toGetDiaryList();
   },
   onShow:function() {

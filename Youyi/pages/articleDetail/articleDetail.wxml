@@ -1,0 +1,78 @@
+<!--pages/articleDetail/articleDetail.wxml-->
+<view class="detailBox">
+    <view class="content" >
+        <!-- 内容区域 -->
+        <view class="diaryBox " id="index" bindtap="bindClick">
+                <view class="diaryContentBox contentBottom" wx:for='{{contentList}}' wx:key='index'>
+                    <view class="first_row">
+                        <image src="{{item.avatar}}"></image>
+                        <view class="info">
+                            <view style="font-size: 16px">{{item.nickname}}</view>
+                            <view class="time">{{item.currentdate}}
+                                <text style="margin-left:8px">{{item.formatTime}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="second_row">
+                        <view class="content" style="color: {{item.fontColor}}">{{item.contentStr}}</view>
+                    <view class="imgBox" wx:for='{{item.diaryImg}}' wx:for-item='imgItem' wx:key='index'>
+                            <image bindtap='imgPreview' class="{{item.diaryImg.length>1?'notOne':''}}" src="{{imgItem}}" data-list="{{item.diaryImg}}"
+                            data-src="{{imgItem}}" mode="{{item.diaryImg.length>1?'':'widthFix'}}"></image>
+                        </view>
+                    </view>
+                    <view class="third_row">
+                        <view class="view">
+                            <text>31</text>次浏览
+                        </view>
+                        <view class="operate">
+                            <view class="upvote" title="点赞" bindtap="deleteDiary" data-id="{{item.id}}"></view>
+                        </view>
+                    </view>
+                    <view class="location" wx:if='{{item.location!==null}}'>{{item.location}}</view>
+                </view>
+        </view>
+        <!-- 评论列表 -->
+        <view class="commentList">
+            <view class="diaryBox" id="index" data-id="{{item.id}}">
+                <view wx:if="{{diaryComment > 0}}">
+                    <view  class="diaryContentBox cell-item" wx:for="{{commentList}}" wx:key="index">
+                        <view class="first_row">
+                            <image src="{{item.avatar}}" mode='widthFix'></image>
+                            <view class="info">
+                                <view style="font-size: 16px">{{item.nickname}}</view>
+                                <view class="time">{{item.commentTime[0]}}
+                                    <text style="margin-left:8px">{{item.commentTime[1]}}</text>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="second_row">
+                            <view class="content">{{item.commentStr}}</view>
+                        </view>
+                        <view class="third_row ">
+                            <view class="view">
+                                <text></text>
+                            </view>
+                            <view class="operate">
+                                <view class="upvote" title="点赞" bindtap="deleteDiary" data-id="{{item.id}}"></view>
+                                <view class="reply" title="评论" ></view>
+                            </view>
+                        </view>
+                    </view>
+
+                    <view wx:if="{{diaryComment <= 0}}" class="unwritten">
+                        <image src="http://148.70.65.234:3003/dairy/diary_bg.png"></image>
+                        <text class="info">还没有记录哦~</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 底部评论盒子 -->
+        <view class="commentBox {{fontShow?'emoji-move-in':'emoji-move-out'}}">
+            <view class="bottomBar flex">
+                <input type="text" bindinput="commentInput"  value="{{comment}}" placeholder="请输入评论内容"
+                    class="inputBox" />
+                <image src='http://148.70.65.234:3003/dairy/send.png' class="right" bindtap="submitComment"></image>
+            </view>
+        </view>
+    </view>
+</view>

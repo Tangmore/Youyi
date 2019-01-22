@@ -1,4 +1,11 @@
 /* pages/gallery/gallery.wxss */
+.searchBox{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    background: #fff;
+}
 .gallery{
     text-align: center;
 }
@@ -20,10 +27,4 @@
     font-size: 14px;
     height: 30px;
 }
-.searchBox{
-    width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 99;
-    background: #fff;
-}
+

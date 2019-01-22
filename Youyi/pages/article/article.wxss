@@ -1,1 +1,32 @@
 /* pages/article/article.wxss */
+.myDiaryBox{
+  position: relative;
+}
+/* tab */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    justify-content: center;
+  }
+  .header .isopen {
+    width: 50%;
+    text-align: center;
+    padding: 8px;
+    font-size: 16px;
+  }
+  .header .active{
+      border-bottom: 4px solid #fcc;
+  }
+
+  .diaryBox {
+    margin-top: 40px;
+    border-top: 1px dashed pink;
+    border-bottom: 1px dashed pink;
+  }
+ 

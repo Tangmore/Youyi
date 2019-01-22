@@ -1,24 +1,33 @@
 {
   "pages": [
-    "pages/addArticle/addArticle",
     "pages/home/home",
-    "pages/authorize/authorize",
-    "pages/addMessage/addMessage",
-    "pages/profile/profile",
+    "pages/everyDay/everyDay",
+    "pages/addArticle/addArticle",
     "pages/article/article",
+    "pages/authorize/authorize",
+    "pages/daily/daily",
+    "pages/profile/profile",
     "pages/gallery/gallery",
     "pages/flowers/flowers",
     "pages/message/message",
     "pages/product/product",
-    "pages/floDetail/floDetail"
+    "pages/floDetail/floDetail",
+    "pages/articleDetail/articleDetail"
+
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "小程序将获取你的地理信息"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fcc",
+    "navigationBarBackgroundColor": "#736AA7",
     "navigationBarTitleText": "有意",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
+    "selectedColor": "#FF75AB",
     "list": [
       {
         "pagePath": "pages/home/home",
@@ -27,7 +36,7 @@
         "selectedIconPath": "pages/static/tabbar/home-active.png"
       },
       {
-        "pagePath": "pages/message/message",
+        "pagePath": "pages/daily/daily",
         "text": "动态",
         "iconPath": "pages/static/tabbar/collect.png",
         "selectedIconPath": "pages/static/tabbar/collect-active.png"
@@ -44,7 +53,6 @@
         "iconPath": "pages/static/tabbar/message.png",
         "selectedIconPath": "pages/static/tabbar/message-active.png"
       },
-     
       {
         "pagePath": "pages/profile/profile",
         "text": "我的",

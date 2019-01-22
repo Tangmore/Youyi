@@ -1,0 +1,23 @@
+<!--pages/everyDay/everyDay.wxml-->
+<view>
+    <!-- 日期选择器 -->
+    <view class="calendar">
+        <view class="date">
+            <picker mode="date" value="{{dateValue}}" start="2018-01-01" end="2999-12-12" bindchange="bindDateChange">
+                {{dateValue}}
+            </picker>
+        </view>
+    </view>
+
+    <!-- 内容部分 -->
+    <view class="contentBox">
+        <view wx:for='{{contentObj}}' wx:key='index' wx:for-item="value" class="content">
+            <view class="title">{{value.title}}</view>
+            <view class="author">{{value.author}}<text class="words">{{value.wc}}字</text></view>
+            <view class="content"> 
+                <text decode="{{true}}">&emsp;&emsp;{{value.digest}}</text>
+                <text decode="{{true}}">{{value.content}}</text>
+            </view>
+        </view>
+    </view>
+</view>
