@@ -13,7 +13,7 @@
     width: 80px;
     height: 40px;
     line-height: 40px;
-    border: 1px solid #ffa0c1;
+    border: 1px solid #3E4D64;
     border-radius: 5px;
     font-size: 12px;
     color: #666;

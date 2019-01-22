@@ -16,22 +16,22 @@
     text-align: center;
   }
   .contentBox .title{
-      text-align: center;
-      padding: 22px;
+      padding: 16px;
       font-size: 26px;
-      color: #736AA7;
+      color: #3E4D64;
   }
   .contentBox .author{
-      text-align: right;
+      padding-left: 16px;
       font-size: 14px;
       margin-right: 14px;
   }
   .contentBox .words{
       text-align: center;
-      margin-left: 4px;
+      margin-left:8px;
       margin-bottom: 4px;
   }
   .contentBox .content{
       font-size: 16px;
       padding: 4px;
+      color:#3E4D64;
   }

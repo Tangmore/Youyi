@@ -21,12 +21,11 @@
     font-size: 16px;
   }
   .header .active{
-      border-bottom: 4px solid #fcc;
+      border-bottom: 4px solid #3E4D64;
   }
 
   .diaryBox {
     margin-top: 40px;
-    border-top: 1px dashed pink;
-    border-bottom: 1px dashed pink;
+    border-bottom: 1px dashed #3E4D64;
   }
  

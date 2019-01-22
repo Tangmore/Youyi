@@ -3,7 +3,7 @@
     <!-- 日期选择器 -->
     <view class="calendar">
         <view class="date">
-            <picker mode="date" value="{{dateValue}}" start="2018-01-01" end="2999-12-12" bindchange="bindDateChange">
+            <picker mode="date" value="{{dateValue}}" start="2008-01-01" end="2999-12-12" bindchange="bindDateChange">
                 {{dateValue}}
             </picker>
         </view>

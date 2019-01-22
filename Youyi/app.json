@@ -22,12 +22,20 @@
   },
   "window": {
     "backgroundTextStyle": "light",
+<<<<<<< HEAD
     "navigationBarBackgroundColor": "#736AA7",
+=======
+    "navigationBarBackgroundColor": "#3E4D64",
+>>>>>>> d3606daa590411c65a0158fca0fedfde09273c94
     "navigationBarTitleText": "有意",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
+<<<<<<< HEAD
     "selectedColor": "#FF75AB",
+=======
+    "selectedColor": "#3E4D64",
+>>>>>>> d3606daa590411c65a0158fca0fedfde09273c94
     "list": [
       {
         "pagePath": "pages/home/home",
